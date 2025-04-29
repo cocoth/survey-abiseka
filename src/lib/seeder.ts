@@ -1,7 +1,7 @@
 import { Role, RoleName } from "@/generated/prisma";
 import { prisma } from "./prisma";
 
-export async function roleSeeder() {
+export async function RoleSeeder() {
 
     const roles = [
         { name: RoleName.admin },
@@ -19,10 +19,3 @@ export async function roleSeeder() {
 
     await prisma.$disconnect();
 }
-
-roleSeeder()
-    .then(() => console.log("Roles seeded successfully!"))
-    .catch((error) => console.error("Error seeding roles:", error))
-    .finally(() => {
-        console.log("Seeder process finished.");
-    });

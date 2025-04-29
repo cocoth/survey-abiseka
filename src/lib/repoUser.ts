@@ -40,7 +40,7 @@ export async function GetUserByRole(role: RoleName) {
     });
 }
 
-export async function CreateUser(data: User) {
+export async function CreateUser(data: Partial<User>) {
     return await prisma.user.create({
         data: {
             name: data.name,

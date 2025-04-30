@@ -1,11 +1,19 @@
 import { RoleName, User } from "@/generated/prisma";
-import { prisma } from "./prisma";
+import { prisma } from "../prisma";
 
 export async function GetRoleIdByName(roleName: RoleName) {
     const role = await prisma.role.findFirst({
         where: { name: roleName },
     });
     return role ? role.id : null;
+}
+
+export async function GetRoleNameByRoleId(id :string) {
+    const role = await prisma.role.findFirst({
+        where: { id },
+    });
+    return role ? role.name : null;
+    
 }
 
 export async function GetAllUsers() {

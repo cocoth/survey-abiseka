@@ -1,6 +1,6 @@
 import * as readline from 'node:readline/promises';
 import { Logger } from './utils';
-import { CreateUser, GetRoleIdByName } from './repoUser';
+import { CreateUser, GetRoleIdByName } from './repo/userRepo';
 import { RoleSeeder } from './seeder';
 
 const input = readline.createInterface({

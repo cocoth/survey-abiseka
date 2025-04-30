@@ -1,9 +1,9 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import React from 'react'
+import React, { useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { set, useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from 'next/link'
+import { HandleLogin } from '@/lib/services/userService'
 
 
 const formSchema = z.object({
@@ -30,6 +31,12 @@ const formSchema = z.object({
 })
 
 const LoginPage = () => {
+    const [setshowPassword, setSetshowPassword] = useState(false)
+    const [Login, setLogin] = useState(false)
+    const [pending, setPending] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("");
+
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -38,12 +45,25 @@ const LoginPage = () => {
         },
     })
 
-    // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            const res = await HandleLogin(values)
+            if (res && res.status !== 200) {
+                setErrorMessage(res.message || "Login gagal");
+                setPending(false)
+                return
+            }
+            setLogin(true)
+            window.location.href = "/"
+        } catch (error) {
+            setErrorMessage("An error occurred while logging in. Please try again later.");
+        } finally {
+            setPending(false)
+        }
     }
+
+
+
     return (
         <div className='bg-[var(--light-color)] min-h-screen flex items-center justify-center'>
             <Card className="w-full max-w-md p-6 mx-auto mt-10 bg-white rounded-xl shadow-xl shadow-gray-900/50 dark:bg-gray-800 sm:p-8 md:max-w-md lg:max-w-lg">
@@ -51,6 +71,13 @@ const LoginPage = () => {
                     <CardTitle className="text-center text-2xl font-bold text-gray-900 dark:text-white">
                         Login
                     </CardTitle>
+                    {errorMessage && (
+                        <div className="w-full text-white bg-red-500 border rounded-md text-sm text-center mt-2 py-1">
+                            <p>
+                                {errorMessage}
+                            </p>
+                        </div>
+                    )}
                 </CardHeader>
                 <CardContent>
                     <Form {...form}>

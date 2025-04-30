@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import React from 'react'
+import React, { useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -18,11 +18,12 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from 'next/link'
+import { HandleRegister } from '@/lib/services/userService'
 
 
 const formSchema = z.object({
     name: z.string().min(3, {
-        
+
         message: "Name must be at least 3 characters.",
     }),
     email: z.string().email({
@@ -34,19 +35,35 @@ const formSchema = z.object({
 })
 
 const RegisterPage = () => {
+    const [setshowPassword, setSetshowPassword] = useState(false)
+    const [Login, setLogin] = useState(false)
+    const [pending, setPending] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("");
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            name: "",
             email: "",
             password: "",
         },
     })
 
-    // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            const res = await HandleRegister(values)
+            if (res && res.status !== 200) {
+                setErrorMessage(res.message || "Register gagal");
+                setPending(false)
+                return
+            }
+            setLogin(true)
+            window.location.href = "/auth/login"
+        } catch (error) {
+            setErrorMessage("An error occurred while register. Please try again later.");
+        } finally {
+            setPending(false)
+        }
     }
     return (
         <div className='bg-[var(--light-color)] min-h-screen flex items-center justify-center'>
@@ -55,6 +72,13 @@ const RegisterPage = () => {
                     <CardTitle className="text-center text-2xl font-bold text-gray-900 dark:text-white">
                         Register
                     </CardTitle>
+                    {errorMessage && (
+                        <div className="w-full text-white bg-red-500 border rounded-md text-sm text-center mt-2 py-1">
+                            <p>
+                                {errorMessage}
+                            </p>
+                        </div>
+                    )}
                 </CardHeader>
                 <CardContent>
                     <Form {...form}>
@@ -100,7 +124,7 @@ const RegisterPage = () => {
                             />
                             <div className="flex w-full justify-end items-center">
                                 <Button type="submit"
-                                    className='cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"'
+                                    className='cursor-pointer w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"'
                                 >
                                     Submit
                                 </Button>

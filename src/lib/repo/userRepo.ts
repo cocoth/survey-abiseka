@@ -38,23 +38,37 @@ export async function GetUserByName(name: string) {
     });
 }
 
+export async function FindUserByEmail(email: string) {
+    return await prisma.user.findFirst({
+        where: { email },
+    });
+}
+
 export async function GetUserByRole(role: RoleName) {
     return await prisma.user.findFirst({
         where: {
-            role: {
+            Role: {
                 name: role
             }
         },
     });
 }
 
+
 export async function CreateUser(data: Partial<User>) {
+    if (!data.email || !data.password) {
+        throw new Error("Email and password are required.");
+    }
+    const existingUser = await FindUserByEmail(data.email);
+    if (existingUser) {
+        throw new Error("User already exists with this email.");
+    }
     return await prisma.user.create({
         data: {
             name: data.name,
             email: data.email,
             password: data.password,
-            role: {
+            Role: {
                 connect: { id: data.roleId },
             },
         },

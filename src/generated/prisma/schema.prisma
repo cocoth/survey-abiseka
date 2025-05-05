@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -14,38 +8,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum RoleName {
-  admin
-  user
-  guest
-}
-
-model Role {
-  id        String    @id @default(cuid())
-  name      RoleName  @unique
-  User      User[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
-}
-
-model User {
-  id              String            @id @default(cuid())
-  name            String?
-  email           String?           @unique
-  password        String?
-  roleId          String
-  session_token   String?
-  role            Role              @relation(fields: [roleId], references: [id])
-  Survey          Survey[]
-  Survey_Response Survey_Response[]
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  deletedAt       DateTime?
+model Survey {
+  id                       String    @id @default(uuid())
+  kecepatan_internet       String?
+  provider_internet        String?
+  jenis_internet           String?
+  jumlah_komputer          String?
+  jenis_komputer           String?
+  spesifikasi_komputer     String?
+  jumlah_laboratorium      String?
+  jenis_laboratorium       String?
+  pendinginan_laboratorium String?
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  deletedAt                DateTime?
+  User                     User      @relation(fields: [userId], references: [id])
+  userId                   String    @unique
 }
 
 model Data_PT {
-  id                   String    @id @default(cuid())
+  id                   String    @id @default(uuid())
+  nama                 String?
   kode                 String?
   akreditasi           String?
   tanggal_berdiri      DateTime?
@@ -55,53 +38,35 @@ model Data_PT {
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
   deletedAt            DateTime?
+  userId               String    @unique
+  User                 User      @relation(fields: [userId], references: [id])
 }
 
-model Survey {
-  id              String            @id @default(cuid())
-  userID          String
-  user            User              @relation(fields: [userID], references: [id])
-  Survey_Field    Survey_Field[]
-  Survey_Response Survey_Response[]
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  deletedAt       DateTime?
+model Role {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  name      RoleName  @unique
+  User      User[]
 }
 
-model Survey_Field {
-  id                    String                  @id @default(cuid())
-  surveyID              String
-  survey                Survey                  @relation(fields: [surveyID], references: [id])
-  field                 String?
-  type                  String
-  options               String?
-  required              Boolean                 @default(false)
-  Survey_Response_Field Survey_Response_Field[]
-  createdAt             DateTime                @default(now())
-  updatedAt             DateTime                @updatedAt
-  deletedAt             DateTime?
+model User {
+  id        String    @id @default(uuid())
+  name      String?
+  email     String?   @unique
+  password  String?
+  roleId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  Role      Role      @relation(fields: [roleId], references: [id])
+  Survey    Survey?   @relation
+  Data_PT   Data_PT?  @relation
 }
 
-model Survey_Response {
-  id                    String                  @id @default(cuid())
-  surveyID              String
-  survey                Survey                  @relation(fields: [surveyID], references: [id])
-  userID                String?
-  user                  User?                   @relation(fields: [userID], references: [id])
-  Survey_Response_Field Survey_Response_Field[]
-  createdAt             DateTime                @default(now())
-  updatedAt             DateTime                @updatedAt
-  deletedAt             DateTime?
-}
-
-model Survey_Response_Field {
-  id         String          @id @default(cuid())
-  responseID String
-  response   Survey_Response @relation(fields: [responseID], references: [id])
-  fieldID    String
-  field      Survey_Field    @relation(fields: [fieldID], references: [id])
-  value      String?
-  createdAt  DateTime        @default(now())
-  updatedAt  DateTime        @updatedAt
-  deletedAt  DateTime?
+enum RoleName {
+  admin
+  user
+  guest
 }

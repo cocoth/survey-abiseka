@@ -28,7 +28,11 @@ async function main(){
         password = await input.question("Input password: ");
         if (!password) {
             Logger.warn("main", "Password cannot be empty. Please try again.");
+        } else if (password.length < 8) {
+            Logger.warn("main", "Password must be at least 8 characters long. Please try again.");
+            password = null; // Reset password to prompt again
         }
+
     }
 
     while (true) {

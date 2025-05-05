@@ -3,10 +3,10 @@ import React from 'react'
 
 const Navbar = () => {
     return (
-        <nav className="flex items-center justify-between p-4 shadow-xl shadow-black">
+        <nav className="flex items-center justify-between p-4">
             <section>
                 <Link href="/" className="flex items-center space-x-2 font-bold text-xl text-[var(--primary-color)]">
-                    Survey Abiseka
+                    Survey ABISEKA
                 </Link>
             </section>
             <section>

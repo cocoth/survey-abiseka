@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className='bg-[var(--secondary-color)] text-white w-full py-4'>
       <section className="flex flex-col items-center justify-center gap-2 text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} <span className='font-bold'>Survey Abiseka</span>. All rights reserved.
+          &copy; {new Date().getFullYear()} <span className='font-bold'>Survey ABISEKA</span>. All rights reserved.
         </p>
         <p className="text-xs">
           Website ini dirancang untuk mendukung ujian online kelayakan kampus.

@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -14,38 +8,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum RoleName {
-  admin
-  user
-  guest
-}
-
-model Role {
-  id        String    @id @default(cuid())
-  name      RoleName  @unique
-  User      User[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
-}
-
-model User {
-  id              String            @id @default(cuid())
-  name            String?
-  email           String?           @unique
-  password        String?
-  roleId          String
-  session_token   String?
-  role            Role              @relation(fields: [roleId], references: [id])
-  Survey          Survey[]
-  Survey_Response Survey_Response[]
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  deletedAt       DateTime?
-}
-
 model Data_PT {
-  id                   String    @id @default(cuid())
+  id                   String    @id
   kode                 String?
   akreditasi           String?
   tanggal_berdiri      DateTime?
@@ -53,55 +17,84 @@ model Data_PT {
   tanggal_SK_pendirian String?
   alamat               String?
   createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
+  updatedAt            DateTime
   deletedAt            DateTime?
 }
 
+model Role {
+  id        String    @id
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  deletedAt DateTime?
+  name      RoleName  @unique
+  User      User[]
+}
+
 model Survey {
-  id              String            @id @default(cuid())
+  id              String            @id
   userID          String
-  user            User              @relation(fields: [userID], references: [id])
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime
+  deletedAt       DateTime?
+  User            User              @relation(fields: [userID], references: [id])
   Survey_Field    Survey_Field[]
   Survey_Response Survey_Response[]
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  deletedAt       DateTime?
 }
 
 model Survey_Field {
-  id                    String                  @id @default(cuid())
+  id                    String                  @id
   surveyID              String
-  survey                Survey                  @relation(fields: [surveyID], references: [id])
   field                 String?
   type                  String
   options               String?
   required              Boolean                 @default(false)
-  Survey_Response_Field Survey_Response_Field[]
   createdAt             DateTime                @default(now())
-  updatedAt             DateTime                @updatedAt
+  updatedAt             DateTime
   deletedAt             DateTime?
+  Survey                Survey                  @relation(fields: [surveyID], references: [id])
+  Survey_Response_Field Survey_Response_Field[]
 }
 
 model Survey_Response {
-  id                    String                  @id @default(cuid())
+  id                    String                  @id
   surveyID              String
-  survey                Survey                  @relation(fields: [surveyID], references: [id])
   userID                String?
-  user                  User?                   @relation(fields: [userID], references: [id])
-  Survey_Response_Field Survey_Response_Field[]
   createdAt             DateTime                @default(now())
-  updatedAt             DateTime                @updatedAt
+  updatedAt             DateTime
   deletedAt             DateTime?
+  Survey                Survey                  @relation(fields: [surveyID], references: [id])
+  User                  User?                   @relation(fields: [userID], references: [id])
+  Survey_Response_Field Survey_Response_Field[]
 }
 
 model Survey_Response_Field {
-  id         String          @id @default(cuid())
-  responseID String
-  response   Survey_Response @relation(fields: [responseID], references: [id])
-  fieldID    String
-  field      Survey_Field    @relation(fields: [fieldID], references: [id])
-  value      String?
-  createdAt  DateTime        @default(now())
-  updatedAt  DateTime        @updatedAt
-  deletedAt  DateTime?
+  id              String          @id
+  responseID      String
+  fieldID         String
+  value           String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime
+  deletedAt       DateTime?
+  Survey_Field    Survey_Field    @relation(fields: [fieldID], references: [id])
+  Survey_Response Survey_Response @relation(fields: [responseID], references: [id])
+}
+
+model User {
+  id              String            @id
+  name            String?
+  email           String?           @unique
+  password        String?
+  roleId          String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime
+  deletedAt       DateTime?
+  Survey          Survey[]
+  Survey_Response Survey_Response[]
+  Role            Role              @relation(fields: [roleId], references: [id])
+}
+
+enum RoleName {
+  admin
+  user
+  guest
 }

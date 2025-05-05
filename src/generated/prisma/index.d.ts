@@ -2691,6 +2691,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     roleId: string | null
+    session_token: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -2702,6 +2703,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     roleId: string | null
+    session_token: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -2713,6 +2715,7 @@ export namespace Prisma {
     email: number
     password: number
     roleId: number
+    session_token: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -2726,6 +2729,7 @@ export namespace Prisma {
     email?: true
     password?: true
     roleId?: true
+    session_token?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -2737,6 +2741,7 @@ export namespace Prisma {
     email?: true
     password?: true
     roleId?: true
+    session_token?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -2748,6 +2753,7 @@ export namespace Prisma {
     email?: true
     password?: true
     roleId?: true
+    session_token?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -2832,6 +2838,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     roleId: string
+    session_token: string | null
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -2860,6 +2867,7 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    session_token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -2875,6 +2883,7 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    session_token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -2887,6 +2896,7 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    session_token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -2899,12 +2909,13 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    session_token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "roleId" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "roleId" | "session_token" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
     Survey?: boolean | User$SurveyArgs<ExtArgs>
@@ -2931,6 +2942,7 @@ export namespace Prisma {
       email: string | null
       password: string | null
       roleId: string
+      session_token: string | null
       createdAt: Date
       updatedAt: Date
       deletedAt: Date | null
@@ -3365,6 +3377,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly roleId: FieldRef<"User", 'String'>
+    readonly session_token: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly deletedAt: FieldRef<"User", 'DateTime'>
@@ -9397,6 +9410,7 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     roleId: 'roleId',
+    session_token: 'session_token',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
@@ -9631,6 +9645,7 @@ export namespace Prisma {
     email?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     roleId?: StringFilter<"User"> | string
+    session_token?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -9645,6 +9660,7 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     roleId?: SortOrder
+    session_token?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -9662,6 +9678,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     roleId?: StringFilter<"User"> | string
+    session_token?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -9676,6 +9693,7 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     roleId?: SortOrder
+    session_token?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -9693,6 +9711,7 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     roleId?: StringWithAggregatesFilter<"User"> | string
+    session_token?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -10113,6 +10132,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -10127,6 +10147,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -10139,6 +10160,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10153,6 +10175,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10166,6 +10189,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -10176,6 +10200,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10187,6 +10212,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10751,6 +10777,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     roleId?: SortOrder
+    session_token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -10762,6 +10789,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     roleId?: SortOrder
+    session_token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -10773,6 +10801,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     roleId?: SortOrder
+    session_token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -11597,6 +11626,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -11609,6 +11639,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -11651,6 +11682,7 @@ export namespace Prisma {
     email?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     roleId?: StringFilter<"User"> | string
+    session_token?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -11820,6 +11852,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -11833,6 +11866,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -11922,6 +11956,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11935,6 +11970,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12125,6 +12161,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -12138,6 +12175,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -12222,6 +12260,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12235,6 +12274,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12378,6 +12418,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    session_token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -12388,6 +12429,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12400,6 +12442,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12412,6 +12455,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    session_token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

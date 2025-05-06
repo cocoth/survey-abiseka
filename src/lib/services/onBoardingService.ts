@@ -35,7 +35,7 @@ export async function HandleGetOnBoardingUser(){
 
 export async function HandleGetOnBoardingUserByUserId(id: string){
     try {
-        const res = await fetch(`/api/auth/onboarding/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/onboarding/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

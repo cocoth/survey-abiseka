@@ -5,7 +5,6 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
     try {
         const { id } = await params;
         const boardingUser = await GetBoardingUserByUserId(id);
-        console.log("boardingUser: ", boardingUser);
         if (!boardingUser) {
             return NextResponse.json({
                 status: 404,

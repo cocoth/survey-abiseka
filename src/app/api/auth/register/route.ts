@@ -59,6 +59,7 @@ export async function POST(req: NextRequest) {
 
         return response
     } catch (error) {
+        console.error("Error in register route: ", error);
         return NextResponse.json({
             status: 500,
             message: "internal server error",

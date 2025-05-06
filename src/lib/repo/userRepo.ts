@@ -87,6 +87,33 @@ export async function UpdateUser(id: string, data: Partial<User>) {
     });
 }
 
+export async function UpsertToken(id: string, token: string) {
+    try {
+        const user = await GetUserById(id);
+        if (!user) {
+            throw new Error("User not found.");
+        }
+    
+        if (user.sessionToken === token) {
+            return user;
+        }
+        return await prisma.user.update({
+            where: { id },
+            data: {
+                sessionToken: token,
+            },
+            // update: { sessionToken: token },
+            // create: {
+            //     sessionToken: token,
+            // },
+        });
+        
+    } catch (error) {
+        console.error("Error in UpsertToken: ", error);
+        return null
+    }
+}
+
 export async function DeleteUser(id: string) {
     return await prisma.user.delete({
         where: { id },

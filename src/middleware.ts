@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { HandleGetOnBoardingUserByUserId } from "./lib/services/onBoardingService";
 import { CreateToken, ValidateTokenWithJose } from "./lib/token";
+import { UpsertToken } from "./lib/repo/userRepo";
 
 export async function middleware(req: NextRequest) {
     console.log("Middleware running...");
@@ -31,6 +32,7 @@ export async function middleware(req: NextRequest) {
                     email: refreshTokenValid.email as string,
                     roleId: refreshTokenValid.roleId as string,
                 });
+                // await UpsertToken(refreshTokenValid.id as string, newToken);
                 const response = NextResponse.redirect(req.url);
                 response.cookies.set("session_token", newToken, {
                     httpOnly: true,

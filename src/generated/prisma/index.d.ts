@@ -4600,6 +4600,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     roleId: string | null
+    sessionToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -4611,6 +4612,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     roleId: string | null
+    sessionToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -4622,6 +4624,7 @@ export namespace Prisma {
     email: number
     password: number
     roleId: number
+    sessionToken: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -4635,6 +4638,7 @@ export namespace Prisma {
     email?: true
     password?: true
     roleId?: true
+    sessionToken?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -4646,6 +4650,7 @@ export namespace Prisma {
     email?: true
     password?: true
     roleId?: true
+    sessionToken?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -4657,6 +4662,7 @@ export namespace Prisma {
     email?: true
     password?: true
     roleId?: true
+    sessionToken?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -4741,6 +4747,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     roleId: string
+    sessionToken: string | null
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -4769,10 +4776,11 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    sessionToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    Role?: boolean | RoleDefaultArgs<ExtArgs>
+    Role?: boolean | User$RoleArgs<ExtArgs>
     Survey?: boolean | User$SurveyArgs<ExtArgs>
     Data_PT?: boolean | User$Data_PTArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -4783,10 +4791,11 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    sessionToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    Role?: boolean | RoleDefaultArgs<ExtArgs>
+    Role?: boolean | User$RoleArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4795,10 +4804,11 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    sessionToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    Role?: boolean | RoleDefaultArgs<ExtArgs>
+    Role?: boolean | User$RoleArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -4807,28 +4817,29 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     roleId?: boolean
+    sessionToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "roleId" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "roleId" | "sessionToken" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Role?: boolean | RoleDefaultArgs<ExtArgs>
+    Role?: boolean | User$RoleArgs<ExtArgs>
     Survey?: boolean | User$SurveyArgs<ExtArgs>
     Data_PT?: boolean | User$Data_PTArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Role?: boolean | RoleDefaultArgs<ExtArgs>
+    Role?: boolean | User$RoleArgs<ExtArgs>
   }
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Role?: boolean | RoleDefaultArgs<ExtArgs>
+    Role?: boolean | User$RoleArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      Role: Prisma.$RolePayload<ExtArgs>
+      Role: Prisma.$RolePayload<ExtArgs> | null
       Survey: Prisma.$SurveyPayload<ExtArgs> | null
       Data_PT: Prisma.$Data_PTPayload<ExtArgs> | null
     }
@@ -4838,6 +4849,7 @@ export namespace Prisma {
       email: string | null
       password: string | null
       roleId: string
+      sessionToken: string | null
       createdAt: Date
       updatedAt: Date
       deletedAt: Date | null
@@ -5235,7 +5247,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Role<T extends User$RoleArgs<ExtArgs> = {}>(args?: Subset<T, User$RoleArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Survey<T extends User$SurveyArgs<ExtArgs> = {}>(args?: Subset<T, User$SurveyArgs<ExtArgs>>): Prisma__SurveyClient<$Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Data_PT<T extends User$Data_PTArgs<ExtArgs> = {}>(args?: Subset<T, User$Data_PTArgs<ExtArgs>>): Prisma__Data_PTClient<$Result.GetResult<Prisma.$Data_PTPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
@@ -5272,6 +5284,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly roleId: FieldRef<"User", 'String'>
+    readonly sessionToken: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly deletedAt: FieldRef<"User", 'DateTime'>
@@ -5671,6 +5684,25 @@ export namespace Prisma {
   }
 
   /**
+   * User.Role
+   */
+  export type User$RoleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Role
+     */
+    select?: RoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Role
+     */
+    omit?: RoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoleInclude<ExtArgs> | null
+    where?: RoleWhereInput
+  }
+
+  /**
    * User.Survey
    */
   export type User$SurveyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5796,6 +5828,7 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     roleId: 'roleId',
+    sessionToken: 'sessionToken',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
@@ -6146,10 +6179,11 @@ export namespace Prisma {
     email?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     roleId?: StringFilter<"User"> | string
+    sessionToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    Role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
+    Role?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
     Survey?: XOR<SurveyNullableScalarRelationFilter, SurveyWhereInput> | null
     Data_PT?: XOR<Data_PTNullableScalarRelationFilter, Data_PTWhereInput> | null
   }
@@ -6160,6 +6194,7 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     roleId?: SortOrder
+    sessionToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -6177,10 +6212,11 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     roleId?: StringFilter<"User"> | string
+    sessionToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    Role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
+    Role?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
     Survey?: XOR<SurveyNullableScalarRelationFilter, SurveyWhereInput> | null
     Data_PT?: XOR<Data_PTNullableScalarRelationFilter, Data_PTWhereInput> | null
   }, "id" | "email">
@@ -6191,6 +6227,7 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     roleId?: SortOrder
+    sessionToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -6208,6 +6245,7 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     roleId?: StringWithAggregatesFilter<"User"> | string
+    sessionToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -6500,10 +6538,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
-    Role: RoleCreateNestedOneWithoutUserInput
+    Role?: RoleCreateNestedOneWithoutUserInput
     Survey?: SurveyCreateNestedOneWithoutUserInput
     Data_PT?: Data_PTCreateNestedOneWithoutUserInput
   }
@@ -6514,6 +6553,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -6526,10 +6566,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Role?: RoleUpdateOneRequiredWithoutUserNestedInput
+    Role?: RoleUpdateOneWithoutUserNestedInput
     Survey?: SurveyUpdateOneWithoutUserNestedInput
     Data_PT?: Data_PTUpdateOneWithoutUserNestedInput
   }
@@ -6540,6 +6581,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6553,6 +6595,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -6563,6 +6606,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6574,6 +6618,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6852,9 +6897,9 @@ export namespace Prisma {
     _max?: NestedEnumRoleNameFilter<$PrismaModel>
   }
 
-  export type RoleScalarRelationFilter = {
-    is?: RoleWhereInput
-    isNot?: RoleWhereInput
+  export type RoleNullableScalarRelationFilter = {
+    is?: RoleWhereInput | null
+    isNot?: RoleWhereInput | null
   }
 
   export type SurveyNullableScalarRelationFilter = {
@@ -6873,6 +6918,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     roleId?: SortOrder
+    sessionToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -6884,6 +6930,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     roleId?: SortOrder
+    sessionToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -6895,6 +6942,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     roleId?: SortOrder
+    sessionToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -7020,10 +7068,12 @@ export namespace Prisma {
     connect?: Data_PTWhereUniqueInput
   }
 
-  export type RoleUpdateOneRequiredWithoutUserNestedInput = {
+  export type RoleUpdateOneWithoutUserNestedInput = {
     create?: XOR<RoleCreateWithoutUserInput, RoleUncheckedCreateWithoutUserInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUserInput
     upsert?: RoleUpsertWithoutUserInput
+    disconnect?: RoleWhereInput | boolean
+    delete?: RoleWhereInput | boolean
     connect?: RoleWhereUniqueInput
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUserInput, RoleUpdateWithoutUserInput>, RoleUncheckedUpdateWithoutUserInput>
   }
@@ -7224,10 +7274,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
-    Role: RoleCreateNestedOneWithoutUserInput
+    Role?: RoleCreateNestedOneWithoutUserInput
     Data_PT?: Data_PTCreateNestedOneWithoutUserInput
   }
 
@@ -7237,6 +7288,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -7264,10 +7316,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Role?: RoleUpdateOneRequiredWithoutUserNestedInput
+    Role?: RoleUpdateOneWithoutUserNestedInput
     Data_PT?: Data_PTUpdateOneWithoutUserNestedInput
   }
 
@@ -7277,6 +7330,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7288,10 +7342,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
-    Role: RoleCreateNestedOneWithoutUserInput
+    Role?: RoleCreateNestedOneWithoutUserInput
     Survey?: SurveyCreateNestedOneWithoutUserInput
   }
 
@@ -7301,6 +7356,7 @@ export namespace Prisma {
     email?: string | null
     password?: string | null
     roleId: string
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -7328,10 +7384,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Role?: RoleUpdateOneRequiredWithoutUserNestedInput
+    Role?: RoleUpdateOneWithoutUserNestedInput
     Survey?: SurveyUpdateOneWithoutUserNestedInput
   }
 
@@ -7341,6 +7398,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: StringFieldUpdateOperationsInput | string
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7352,6 +7410,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -7364,6 +7423,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -7406,6 +7466,7 @@ export namespace Prisma {
     email?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     roleId?: StringFilter<"User"> | string
+    sessionToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -7616,6 +7677,7 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     password?: string | null
+    sessionToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -7626,6 +7688,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7638,6 +7701,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7650,6 +7714,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

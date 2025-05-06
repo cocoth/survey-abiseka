@@ -1,4 +1,4 @@
-import { GetUserByEmail } from "@/lib/repo/userRepo";
+import { GetUserByEmail, UpsertToken } from "@/lib/repo/userRepo";
 import { CreateToken } from "@/lib/token";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -42,6 +42,10 @@ export async function POST(req: NextRequest) {
                 email: user.email || "",
                 roleId: user.roleId,
             })
+
+            // Set the token in the database
+
+            await UpsertToken(user.id, token);
 
             response.cookies.set("session_token", token, {
                 httpOnly: true,

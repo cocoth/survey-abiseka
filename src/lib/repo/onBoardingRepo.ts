@@ -1,8 +1,8 @@
 import { Data_PT } from "@/generated/prisma";
 import { prisma } from "../prisma";
 
-export async function CreateBoardingUser(data: Data_PT){
-    if (!data) {
+export async function CreateBoardingUser(data: Partial<Data_PT>){
+    if (!data || !data.userId) {
         throw new Error("all fields are required.");
     }
     return await prisma.data_PT.create({

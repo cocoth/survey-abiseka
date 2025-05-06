@@ -2382,7 +2382,7 @@ export namespace Prisma {
     akreditasi: string | null
     tanggal_berdiri: Date | null
     no_SK_pendirian: string | null
-    tanggal_SK_pendirian: string | null
+    tanggal_SK_pendirian: Date | null
     alamat: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2397,7 +2397,7 @@ export namespace Prisma {
     akreditasi: string | null
     tanggal_berdiri: Date | null
     no_SK_pendirian: string | null
-    tanggal_SK_pendirian: string | null
+    tanggal_SK_pendirian: Date | null
     alamat: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2547,7 +2547,7 @@ export namespace Prisma {
     akreditasi: string | null
     tanggal_berdiri: Date | null
     no_SK_pendirian: string | null
-    tanggal_SK_pendirian: string | null
+    tanggal_SK_pendirian: Date | null
     alamat: string | null
     createdAt: Date
     updatedAt: Date
@@ -2658,7 +2658,7 @@ export namespace Prisma {
       akreditasi: string | null
       tanggal_berdiri: Date | null
       no_SK_pendirian: string | null
-      tanggal_SK_pendirian: string | null
+      tanggal_SK_pendirian: Date | null
       alamat: string | null
       createdAt: Date
       updatedAt: Date
@@ -3094,7 +3094,7 @@ export namespace Prisma {
     readonly akreditasi: FieldRef<"Data_PT", 'String'>
     readonly tanggal_berdiri: FieldRef<"Data_PT", 'DateTime'>
     readonly no_SK_pendirian: FieldRef<"Data_PT", 'String'>
-    readonly tanggal_SK_pendirian: FieldRef<"Data_PT", 'String'>
+    readonly tanggal_SK_pendirian: FieldRef<"Data_PT", 'DateTime'>
     readonly alamat: FieldRef<"Data_PT", 'String'>
     readonly createdAt: FieldRef<"Data_PT", 'DateTime'>
     readonly updatedAt: FieldRef<"Data_PT", 'DateTime'>
@@ -6002,7 +6002,7 @@ export namespace Prisma {
     akreditasi?: StringNullableFilter<"Data_PT"> | string | null
     tanggal_berdiri?: DateTimeNullableFilter<"Data_PT"> | Date | string | null
     no_SK_pendirian?: StringNullableFilter<"Data_PT"> | string | null
-    tanggal_SK_pendirian?: StringNullableFilter<"Data_PT"> | string | null
+    tanggal_SK_pendirian?: DateTimeNullableFilter<"Data_PT"> | Date | string | null
     alamat?: StringNullableFilter<"Data_PT"> | string | null
     createdAt?: DateTimeFilter<"Data_PT"> | Date | string
     updatedAt?: DateTimeFilter<"Data_PT"> | Date | string
@@ -6038,7 +6038,7 @@ export namespace Prisma {
     akreditasi?: StringNullableFilter<"Data_PT"> | string | null
     tanggal_berdiri?: DateTimeNullableFilter<"Data_PT"> | Date | string | null
     no_SK_pendirian?: StringNullableFilter<"Data_PT"> | string | null
-    tanggal_SK_pendirian?: StringNullableFilter<"Data_PT"> | string | null
+    tanggal_SK_pendirian?: DateTimeNullableFilter<"Data_PT"> | Date | string | null
     alamat?: StringNullableFilter<"Data_PT"> | string | null
     createdAt?: DateTimeFilter<"Data_PT"> | Date | string
     updatedAt?: DateTimeFilter<"Data_PT"> | Date | string
@@ -6074,7 +6074,7 @@ export namespace Prisma {
     akreditasi?: StringNullableWithAggregatesFilter<"Data_PT"> | string | null
     tanggal_berdiri?: DateTimeNullableWithAggregatesFilter<"Data_PT"> | Date | string | null
     no_SK_pendirian?: StringNullableWithAggregatesFilter<"Data_PT"> | string | null
-    tanggal_SK_pendirian?: StringNullableWithAggregatesFilter<"Data_PT"> | string | null
+    tanggal_SK_pendirian?: DateTimeNullableWithAggregatesFilter<"Data_PT"> | Date | string | null
     alamat?: StringNullableWithAggregatesFilter<"Data_PT"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Data_PT"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Data_PT"> | Date | string
@@ -6338,7 +6338,7 @@ export namespace Prisma {
     akreditasi?: string | null
     tanggal_berdiri?: Date | string | null
     no_SK_pendirian?: string | null
-    tanggal_SK_pendirian?: string | null
+    tanggal_SK_pendirian?: Date | string | null
     alamat?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6353,7 +6353,7 @@ export namespace Prisma {
     akreditasi?: string | null
     tanggal_berdiri?: Date | string | null
     no_SK_pendirian?: string | null
-    tanggal_SK_pendirian?: string | null
+    tanggal_SK_pendirian?: Date | string | null
     alamat?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6368,7 +6368,7 @@ export namespace Prisma {
     akreditasi?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_berdiri?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     no_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_SK_pendirian?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alamat?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6383,7 +6383,7 @@ export namespace Prisma {
     akreditasi?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_berdiri?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     no_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_SK_pendirian?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alamat?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6398,7 +6398,7 @@ export namespace Prisma {
     akreditasi?: string | null
     tanggal_berdiri?: Date | string | null
     no_SK_pendirian?: string | null
-    tanggal_SK_pendirian?: string | null
+    tanggal_SK_pendirian?: Date | string | null
     alamat?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6413,7 +6413,7 @@ export namespace Prisma {
     akreditasi?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_berdiri?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     no_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_SK_pendirian?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alamat?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6427,7 +6427,7 @@ export namespace Prisma {
     akreditasi?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_berdiri?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     no_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_SK_pendirian?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alamat?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7476,7 +7476,7 @@ export namespace Prisma {
     akreditasi?: string | null
     tanggal_berdiri?: Date | string | null
     no_SK_pendirian?: string | null
-    tanggal_SK_pendirian?: string | null
+    tanggal_SK_pendirian?: Date | string | null
     alamat?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7490,7 +7490,7 @@ export namespace Prisma {
     akreditasi?: string | null
     tanggal_berdiri?: Date | string | null
     no_SK_pendirian?: string | null
-    tanggal_SK_pendirian?: string | null
+    tanggal_SK_pendirian?: Date | string | null
     alamat?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7590,7 +7590,7 @@ export namespace Prisma {
     akreditasi?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_berdiri?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     no_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_SK_pendirian?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alamat?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7604,7 +7604,7 @@ export namespace Prisma {
     akreditasi?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_berdiri?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     no_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_SK_pendirian?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_SK_pendirian?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alamat?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

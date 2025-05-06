@@ -21,3 +21,14 @@ interface RegisterRequest{
   email: string;
   password: string;
 }
+
+interface OnBoardingRequest{
+  nama: string;
+  kode: string;
+  akreditasi: string;
+  tanggalBerdiri: Date;
+  noSKPendirian: string;
+  tanggalSKPendirian: Date;
+  alamat: string;
+  userId: string;
+}

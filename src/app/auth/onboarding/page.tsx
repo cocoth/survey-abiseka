@@ -4,16 +4,17 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { HandleOnBoarding } from '@/lib/services/onBoardingService'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const formSchema = z.object({
-    namaUniversitas: z.string().min(3, {
+    nama: z.string().min(3, {
         message: "Nama Universitas harus lebih dari 3 karakter.",
     }),
-    kodeUniversitas: z.string().min(3, {
+    kode: z.string().min(3, {
         message: "Kode Universitas harus lebih dari 3 karakter.",
     }),
     akreditasi: z.string().min(3, {
@@ -41,8 +42,8 @@ const OnBoardingPage = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            namaUniversitas: "",
-            kodeUniversitas: "",
+            nama: "",
+            kode: "",
             akreditasi: "",
             tanggalBerdiri: "",
             noSKPendirian: "",
@@ -53,13 +54,19 @@ const OnBoardingPage = () => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            // const res = await HandleRegister(values)
-            // if (res && res.status !== 200) {
-            //     setErrorMessage(res.message || "Register gagal");
-            //     setPending(false)
-            //     return
-            // }
-            // window.location.href = "/auth/onboarding"
+            setPending(true)
+            const res = await HandleOnBoarding({
+                ...values,
+                tanggalBerdiri: new Date(values.tanggalBerdiri),
+                tanggalSKPendirian: new Date(values.tanggalSKPendirian),
+            })
+
+            if (res && res.status !== 200) {
+                setErrorMessage(res.message || "Register gagal");
+                setPending(false)
+                return
+            }
+            window.location.href = "/"
         } catch (error) {
             setErrorMessage("An error occurred while register. Please try again later.");
         } finally {
@@ -75,6 +82,13 @@ const OnBoardingPage = () => {
                         <CardTitle className='text-center text-2xl font-bold'>
                             Onboarding Process
                         </CardTitle>
+                        {errorMessage && (
+                            <div className="w-full text-white bg-red-500 border rounded-md text-sm text-center mt-2 py-1">
+                                <p>
+                                    {errorMessage}
+                                </p>
+                            </div>
+                        )}
                     </CardHeader>
                     <CardContent className='text-center'>
                         <Form {...form}>
@@ -82,7 +96,7 @@ const OnBoardingPage = () => {
                                 <section className='grid gap-3'>
                                     <FormField
                                         control={form.control}
-                                        name="namaUniversitas"
+                                        name="nama"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Nama Universitas</FormLabel>
@@ -95,7 +109,7 @@ const OnBoardingPage = () => {
                                     />
                                     <FormField
                                         control={form.control}
-                                        name="kodeUniversitas"
+                                        name="kode"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Kode Universitas</FormLabel>

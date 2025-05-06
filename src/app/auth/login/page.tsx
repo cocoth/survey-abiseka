@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input"
 import Link from 'next/link'
 import { HandleLogin } from '@/lib/services/userService'
 import { ClipboardCheck } from 'lucide-react'
+import { HandleGetOnBoardingUserByUserId } from '@/lib/services/onBoardingService'
 
 
 const formSchema = z.object({
@@ -32,11 +33,9 @@ const formSchema = z.object({
 })
 
 const LoginPage = () => {
-    const [setshowPassword, setSetshowPassword] = useState(false)
     const [Login, setLogin] = useState(false)
     const [pending, setPending] = useState(false)
     const [errorMessage, setErrorMessage] = useState("");
-
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -55,7 +54,16 @@ const LoginPage = () => {
                 return
             }
             setLogin(true)
-            window.location.href = "/"
+
+            const onboarding = await HandleGetOnBoardingUserByUserId(res?.data.id)
+            console.log(JSON.stringify(onboarding))
+            if (onboarding?.status !== 200) {
+                window.location.href = "/auth/onboarding"
+                setPending(false)
+            } else{
+                window.location.href = "/"
+                setPending(false)
+            }
         } catch (error) {
             setErrorMessage("An error occurred while logging in. Please try again later.");
         } finally {

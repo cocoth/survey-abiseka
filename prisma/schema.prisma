@@ -33,7 +33,7 @@ model Data_PT {
   akreditasi           String?
   tanggal_berdiri      DateTime?
   no_SK_pendirian      String?
-  tanggal_SK_pendirian String?
+  tanggal_SK_pendirian DateTime?
   alamat               String?
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt

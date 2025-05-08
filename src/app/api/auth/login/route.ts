@@ -15,6 +15,8 @@ export async function POST(req: NextRequest) {
         }
 
         const user = await GetUserByEmail(email);
+        console.log("User: ", user)
+
         if (!user) {
             return NextResponse.json({
                 status: 400,
@@ -33,17 +35,17 @@ export async function POST(req: NextRequest) {
                     id: user.id,
                     name: user.name,
                     email: user.email,
-                    roleId: user.roleId,
+                    role: user.Role?.name,
                 }
             })
             const token = CreateToken({
                 id: user.id,
                 name: user.name || "",
                 email: user.email || "",
-                roleId: user.roleId,
+                role: user.Role?.name || "",
             })
 
-            // Set the token in the database
+            // store token in the database
 
             await UpsertToken(user.id, token);
 

@@ -33,6 +33,7 @@ export async function UpdateBoardingUser(id: string, data: Partial<Data_PT>) {
             no_SK_pendirian: data.no_SK_pendirian,
             tanggal_SK_pendirian: data.tanggal_SK_pendirian,
             alamat: data.alamat,
+            
         },
     });
 }

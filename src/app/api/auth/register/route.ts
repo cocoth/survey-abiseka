@@ -1,4 +1,4 @@
-import { CreateUser, GetRoleIdByName, GetUserByEmail } from "@/lib/repo/userRepo";
+import { CreateUser, GetRoleIdByName, GetUserByEmail, UpsertToken } from "@/lib/repo/userRepo";
 import { CreateToken } from "@/lib/token";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -42,13 +42,14 @@ export async function POST(req: NextRequest) {
                 email: newUser.email,
                 roleId: newUser.roleId,
             }
-        })
+        } as ResponseAPI, { status: 200 });
         const token = CreateToken({
             id: newUser.id,
             name: newUser.name || "",
             email: newUser.email || "",
-            roleId: newUser.roleId,
+            role: newUser.Role?.name || "",
         })
+        await UpsertToken(newUser.id, token);
 
         response.cookies.set("session_token", token, {
             httpOnly: true,

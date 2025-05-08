@@ -3,14 +3,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import React, { useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { set, useForm } from "react-hook-form"
+import {useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -18,9 +17,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from 'next/link'
-import { HandleLogin } from '@/lib/services/userService'
+import {  HandleLogin } from '@/lib/services/userService'
 import { ClipboardCheck } from 'lucide-react'
-import { HandleGetOnBoardingUserByUserId } from '@/lib/services/onBoardingService'
 
 
 const formSchema = z.object({
@@ -53,17 +51,16 @@ const LoginPage = () => {
                 setPending(false)
                 return
             }
+
             setLogin(true)
 
-            const onboarding = await HandleGetOnBoardingUserByUserId(res?.data.id)
-            console.log(JSON.stringify(onboarding))
-            if (onboarding?.status !== 200) {
-                window.location.href = "/auth/onboarding"
-                setPending(false)
-            } else{
-                window.location.href = "/"
-                setPending(false)
+            if (res && res.data.role === "admin") {
+                window.location.href = "/dashboard"
+            } else if (res && res.data.role === "user") {
+                window.location.href = "/home"
             }
+            setPending(false)
+
         } catch (error) {
             setErrorMessage("An error occurred while logging in. Please try again later.");
         } finally {

@@ -8,7 +8,7 @@ interface Token{
   id: string;
   name: string;
   email: string;
-  roleId: string;
+  role: string;
 }
 
 interface LoginRequest{

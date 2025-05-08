@@ -23,6 +23,9 @@ export async function GetAllUsers() {
 export async function GetUserByEmail(email: string) {
     return await prisma.user.findUnique({
         where: { email },
+        include: {
+            Role: true,
+        }
     });
 }
 
@@ -35,12 +38,6 @@ export async function GetUserById(id: string) {
 export async function GetUserByName(name: string) {
     return await prisma.user.findFirst({
         where: { name },
-    });
-}
-
-export async function FindUserByEmail(email: string) {
-    return await prisma.user.findFirst({
-        where: { email },
     });
 }
 
@@ -59,7 +56,7 @@ export async function CreateUser(data: Partial<User>) {
     if (!data.email || !data.password) {
         throw new Error("Email and password are required.");
     }
-    const existingUser = await FindUserByEmail(data.email);
+    const existingUser = await GetUserByEmail(data.email);
     if (existingUser) {
         throw new Error("User already exists with this email.");
     }
@@ -72,6 +69,9 @@ export async function CreateUser(data: Partial<User>) {
                 connect: { id: data.roleId },
             },
         },
+        include:{
+            Role: true,
+        }
     });
 }
 

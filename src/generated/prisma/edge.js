@@ -181,7 +181,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/sysx/Documents/Project/Freelance/survey-abiseka/src/generated/prisma",
+      "value": "D:\\YOUR HUSBAND WORK\\Project\\Web\\survey-abiseka\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -190,12 +190,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/sysx/Documents/Project/Freelance/survey-abiseka/prisma/schema.prisma",
+    "sourceFilePath": "D:\\YOUR HUSBAND WORK\\Project\\Web\\survey-abiseka\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -213,7 +213,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgres://postgres:postgres@localhost:5432/survey-abiseka?schema=public"
+        "value": "postgresql://postgres:postgres@localhost:5432/survey-abiseka?schema=public"
       }
     }
   },

@@ -6,7 +6,7 @@ export function CreateToken(data: Token) {
         id: data.id,
         name: data.name,
         email: data.email,
-        roleId: data.roleId
+        role: data.role
     }, process.env.JWT_SECRET as string, {
         expiresIn: '1h'
     })
@@ -21,7 +21,7 @@ export async function CreateTokenWithJose(data: Token): Promise<string> {
         id: data.id,
         name: data.name,
         email: data.email,
-        roleId: data.roleId,
+        role: data.role,
     })
         .setProtectedHeader({ alg: 'HS256' })
         .setExpirationTime('1d')
@@ -77,7 +77,7 @@ export function CreateRefreshToken(data: Token): string {
             id: data.id,
             name: data.name,
             email: data.email,
-            roleId: data.roleId,
+            role: data.role,
         },
         process.env.JWT_SECRET as string,
         { expiresIn: '7d' } // Refresh token berlaku selama 7 hari

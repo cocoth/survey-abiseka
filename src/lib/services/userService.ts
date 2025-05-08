@@ -1,4 +1,36 @@
+export async function HandleGetCurrentUser(): Promise<ResponseAPI | null> {
+    try {
+        const res = await fetch("/api/auth/currentUser", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        })
 
+        const result: ResponseAPI = await res.json()
+        return result
+    } catch (error) {
+        return null
+    }
+}
+
+export async function HandleGetCurrentRole(): Promise<ResponseAPI | null> {
+    try {
+        const res = await fetch("/api/auth/currentRole", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        })
+
+        const result: ResponseAPI = await res.json()
+        return result
+    } catch (error) {
+        return null
+    }
+}
 
 export async function HandleRegister(data: RegisterRequest): Promise<ResponseAPI | null> {
     try {
@@ -8,7 +40,7 @@ export async function HandleRegister(data: RegisterRequest): Promise<ResponseAPI
                 "Content-Type": "application/json",
             },
             credentials: "include",
-            body: JSON.stringify({ name: data.name, email: data.email, password: data.password }),
+            body: JSON.stringify(data),
         })
 
         const result: ResponseAPI = await res.json()
@@ -26,7 +58,7 @@ export async function HandleLogin(data: LoginRequest): Promise<ResponseAPI | nul
                 "Content-Type": "application/json",
             },
             credentials: "include",
-            body: JSON.stringify({ email: data.email, password: data.password }),
+            body: JSON.stringify(data),
         })
 
         const result: ResponseAPI = await res.json()
@@ -40,6 +72,23 @@ export async function HandleLogout(): Promise<ResponseAPI | null> {
     try {
         const res = await fetch("/api/auth/logout", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        })
+
+        const result: ResponseAPI = await res.json()
+        return result
+    } catch (error) {
+        return null
+    }
+}
+
+export async function HandleGetUserById(id: string): Promise<ResponseAPI | null> {
+    try {
+        const res = await fetch(`/api/user/${id}`, {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },

@@ -6,6 +6,7 @@ export async function GET(req: NextRequest) {
     try {
 
         const token = req.cookies.get("session_token")?.value || null;
+        console.log("token api: ", token);
         if (!token) {
             return NextResponse.json({
                 status: 401,
@@ -15,6 +16,7 @@ export async function GET(req: NextRequest) {
         }
 
         const decodedToken = await ValidateTokenWithJose(token);
+        console.log("decodedToken: ", decodedToken);
         if (!decodedToken) {
             return NextResponse.json({
                 status: 401,

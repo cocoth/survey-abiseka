@@ -9,6 +9,8 @@ interface Token{
   name: string;
   email: string;
   role: string;
+  exp?: number
+  iat?: number;
 }
 
 interface LoginRequest{
@@ -30,5 +32,18 @@ interface OnBoardingRequest{
   noSKPendirian: string;
   tanggalSKPendirian: Date;
   alamat: string;
+  userId: string;
+}
+
+interface SurveyRequest{
+  kecepatan_internet: string;
+  provider_internet: string;
+  jenis_internet: string;
+  jumlah_komputer: string;
+  jenis_komputer: string;
+  spesifikasi_komputer: string;
+  jumlah_laboratorium: string;
+  jenis_laboratorium: string;
+  pendinginan_laboratorium: string;
   userId: string;
 }

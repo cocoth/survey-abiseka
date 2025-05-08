@@ -23,7 +23,7 @@ export async function GetAllSurveys() {
     return await prisma.survey.findMany();
 }
 
-export async function CreateSurvey(data: Survey) {
+export async function CreateSurvey(data: Partial<Survey>) {
     if (!data) {
         throw new Error("all fields are required.");
     }
@@ -38,7 +38,7 @@ export async function CreateSurvey(data: Survey) {
             jumlah_laboratorium: data.jumlah_laboratorium,
             jenis_laboratorium: data.jenis_laboratorium,
             pendinginan_laboratorium: data.pendinginan_laboratorium,
-            userId: data.userId,
+            userId: data.userId as string,
         },
     });
 }

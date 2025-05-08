@@ -19,7 +19,7 @@ const ProfileCard = (data: ProfileCardProps) => {
                 <CardHeader className='flex gap-3 items-center'>
                     <Avatar
                         username={data.user?.name || ""}
-                        className='h-20 w-20 ring shadow-md shadow-black ring-black rounded-full'
+                        className='h-20 w-20 bg-cover ring shadow-md shadow-black ring-black rounded-full'
                     />
                     <section className='grid justify-center'>
                         <h1 className='flex gap-2'>

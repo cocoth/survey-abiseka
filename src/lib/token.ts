@@ -11,6 +11,8 @@ export function CreateToken(data: Token) {
         expiresIn: '1h'
     })
 
+    console.log("Create Token: ", token)
+
     return token
 }
 

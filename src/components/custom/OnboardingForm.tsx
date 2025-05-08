@@ -36,23 +36,23 @@ const OnboardingForm: React.FC<OnboardingFormProps> = ({ userId, initialData, is
         resolver: zodResolver(formSchema),
         defaultValues: initialData
             ? {
-                  nama: initialData.nama ?? "",
-                  kode: initialData.kode ?? "",
-                  akreditasi: initialData.akreditasi ?? "",
-                  tanggalBerdiri: initialData.tanggal_berdiri ? initialData.tanggal_berdiri.toISOString().split("T")[0] : "",
-                  noSKPendirian: initialData.no_SK_pendirian ?? "",
-                  tanggalSKPendirian: initialData.tanggal_SK_pendirian ? initialData.tanggal_SK_pendirian.toISOString().split("T")[0] : "",
-                  alamat: initialData.alamat ?? "",
-              }
+                nama: initialData.nama ?? "",
+                kode: initialData.kode ?? "",
+                akreditasi: initialData.akreditasi ?? "",
+                tanggalBerdiri: initialData.tanggal_berdiri ? initialData.tanggal_berdiri.toISOString().split("T")[0] : "",
+                noSKPendirian: initialData.no_SK_pendirian ?? "",
+                tanggalSKPendirian: initialData.tanggal_SK_pendirian ? initialData.tanggal_SK_pendirian.toISOString().split("T")[0] : "",
+                alamat: initialData.alamat ?? "",
+            }
             : {
-                  nama: "",
-                  kode: "",
-                  akreditasi: "",
-                  tanggalBerdiri: "",
-                  noSKPendirian: "",
-                  tanggalSKPendirian: "",
-                  alamat: "",
-              },
+                nama: "",
+                kode: "",
+                akreditasi: "",
+                tanggalBerdiri: "",
+                noSKPendirian: "",
+                tanggalSKPendirian: "",
+                alamat: "",
+            },
     });
 
     useEffect(() => {
@@ -97,8 +97,11 @@ const OnboardingForm: React.FC<OnboardingFormProps> = ({ userId, initialData, is
                 setErrorMessage(res?.message || "Gagal menyimpan data onboarding.");
                 return;
             }
-
-            window.location.href = "/";
+            if (isProfilePage) {
+                window.location.reload()
+            } else {
+                window.location.href = "/";
+            }
         } catch (error) {
             setErrorMessage("Terjadi kesalahan. Silakan coba lagi nanti.");
         } finally {

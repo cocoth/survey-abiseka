@@ -90,7 +90,7 @@ const Navbar = () => {
                 </ul>
                 <div
                     ref={dropdownRef}
-                    className={`absolute right-1 mt-2 w-48 bg-white border border-gray-400 rounded-md shadow-lg overflow-hidden transition-all duration-300 
+                    className={`absolute right-1 top-[4.2rem] mt-2 w-48 bg-white border border-gray-400 rounded-md shadow-lg overflow-hidden transition-all duration-300 
                         ${isDropdownOpen ? "max-h-40 opacity-100"
                             : "max-h-0 opacity-0"
                         }`}

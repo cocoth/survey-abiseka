@@ -27,7 +27,7 @@ const Sidebar = () => {
     }, [])
 
     return (
-        <aside className="w-64 h-screen bg-gray-100 border-e-2 border-black p-4 sticky top-0 left-0">
+        <aside className="w-64 h-screen bg-gray-100 border-e border-black p-4 sticky top-0 left-0">
             <nav>
                 <ul className="grid items-center space-y-4">
                     <li>

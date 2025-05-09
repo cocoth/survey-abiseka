@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChartColumnIncreasing, House } from "lucide-react";
+import { ChartColumnIncreasing, CircleUserRound, House } from "lucide-react";
 import Image from "next/image";
 import { User } from "@/generated/prisma";
 import { HandleGetCurrentRole, HandleGetCurrentUser } from "@/lib/services/userService";
@@ -32,46 +32,38 @@ const Sidebar = () => {
         {
             label: role === "admin" ? "Dashboard" : "Home",
             href: role === "admin" ? "/dashboard" : "/home",
-            icon: <House className="w-5 h-5" />,
+            icon: <House className="w-7 h-7" />,
             active: pathname === "/home" || pathname === "/dashboard",
         },
         {
             label: "Survey",
             href: role === "admin" ? "/dashboard/survey" : "/home/survey",
-            icon: <ChartColumnIncreasing className="w-5 h-5" />,
+            icon: <ChartColumnIncreasing className="w-7 h-7" />,
             active: pathname === "/home/survey" || pathname === "/dashboard/survey",
         },
         {
             label: "Profile",
             href: "/profile",
-            icon: (
-                <Image
-                    src="/profile.svg"
-                    alt="Profile"
-                    width={20}
-                    height={20}
-                    className="w-5 h-5"
-                />
-            ),
+            icon: <CircleUserRound className="w-7 h-7" />,
             active: pathname === "/profile",
         },
     ];
 
     return (
-        <aside className="w-1/5 h-screen border-e border-black p-4 sticky top-0 left-0">
+        <aside className="w-1/5 h-screen bg-[var(--secondary-color)] p-4 sticky top-0 left-0">
             <nav>
-                <ul className="grid items-center space-y-4 font-bold">
+                <ul className="grid items-center space-y-4 font-bold text-white">
                     {navItems.map((item, index) => (
                         <li key={index}>
                             <Link
                                 href={item.href}
                                 className={`flex items-center gap-3 px-4 py-2 font-bold rounded-md transition ${
-                                    item.active ? "bg-blue-500/60" 
+                                    item.active ? "bg-gray-50/30" 
                                     : "hover:bg-blue-500/40"
                                     }`}
                             >
                                 {item.icon}
-                                <span className="text-gray-800 font-bold">{item.label}</span>
+                                <span className="font-bold">{item.label}</span>
                             </Link>
                         </li>
                     ))}

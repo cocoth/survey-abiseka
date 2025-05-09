@@ -64,9 +64,9 @@ const Navbar = () => {
 
 
     return (
-        <nav className="flex items-center justify-between p-4 shadow-md">
+        <nav className="flex items-center justify-between p-4 bg-[var(--acent-color)]/90 shadow-md">
             <section>
-                <Link href="/" className="flex items-center space-x-2 font-bold text-xl text-[var(--primary-color)]">
+                <Link href="/" className="flex items-center ml-6 font-bold text-xl text-white">
                     Survey ABISEKA
                 </Link>
             </section>

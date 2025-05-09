@@ -60,8 +60,8 @@ const ProfilePage = () => {
   }, [user])
 
   return (
-    <div>
-      <h1 className='text-2xl font-bold my-3'>Profile</h1>
+    <div className='flex flex-col justify-center items-center'>
+      <h1 className='text-2xl font-bold mb-4'>Profile</h1>
 
       <ProfileCard
         user={user || null}

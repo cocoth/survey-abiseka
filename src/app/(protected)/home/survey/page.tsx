@@ -50,128 +50,172 @@ const SurveyPage = () => {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-4">Survey</h1>
-            <Card className='w-full max-w-lg p-4 rounded-xl shadow-lg'>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col md:grid md:grid-cols-2 w-full justify-center gap-4 space-y-8">
-                        <section className="grid gap-4">
-                            <FormField
-                                control={form.control}
-                                name="kecepatan_internet"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Kecepatan Internet</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="100 Mb/s" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="provider_internet"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Provider Internet</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="Indihome" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="jenis_internet"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Jenis Internet</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="LAN" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="jumlah_komputer"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Jumlah Komputer</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="200" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="spesifikasi_komputer"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Spesifikasi Komputer</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="Intel Core 19" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="jumlah_laboratorium"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Jumlah Laboratorium</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="4" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="jenis_laboratorium"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Jenis Laboratorium</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="Laboratorium Komputer" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="pendinginan_laboratorium"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Pendinginan Laboratorium</FormLabel>
-                                        <FormControl>
-                                            <Input required placeholder="AC" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                        </section>
-                        <div className="flex w-full justify-center items-center col-span-2">
-                            <Button
-                                type="submit"
-                                className="cursor-pointer w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
-                            >
-                                Submit
-                                {/* {isUpdate ? "Update" : "Submit"} */}
-                            </Button>
-                        </div>
-                    </form>
-                </Form>
-            </Card>
+            <div className="flex flex-col justify-center items-center">
+                <h1 className="text-2xl font-bold mb-4">Survey</h1>
+                <Card className='w-full max-w-lg p-4'>
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+                            <section className='grid gap-4'>
+                                <FormField
+                                    control={form.control}
+                                    name="kecepatan_internet"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Kecepatan Internet
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Kecepatan internet yang digunakan di laboratorium dalam satuan Mbps (Megabit per detik).
+                                            </p>
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="100 Mb/s" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="provider_internet"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Provider Internet
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Nama provider internet yang digunakan di laboratorium.
+                                            </p>
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="Indihome" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="jenis_internet"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Jenis Internet
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Jenis internet yang digunakan di laboratorium (misalnya: Fiber Optic, DSL, dll).
+                                            </p>
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="LAN" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="jumlah_komputer"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Jumlah Komputer
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Jumlah komputer yang tersedia di laboratorium.
+                                            </p>
+
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="200" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="spesifikasi_komputer"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Spesifikasi Komputer
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Spesifikasi komputer yang digunakan di laboratorium (misalnya: Intel Core i5, 8GB RAM, 1TB HDD).
+                                            </p>
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="Intel Core 19" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="jumlah_laboratorium"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Jumlah Laboratorium
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Jumlah laboratorium yang tersedia di kampus.
+                                            </p>
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="4" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="jenis_laboratorium"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Jenis Laboratorium
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Jenis laboratorium yang tersedia di kampus (misalnya: Laboratorium Jaringan, Laboratorium Pemrograman, dll).
+                                            </p>
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="Laboratorium Komputer" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="pendinginan_laboratorium"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className='text-lg font-semibold'>
+                                                Pendinginan Laboratorium
+                                            </FormLabel>
+                                            <p className='text-sm text-gray-600'>
+                                                Sistem pendinginan yang digunakan di laboratorium (misalnya: AC, kipas angin, dll).
+                                            </p>
+                                            <FormControl>
+                                                <Input className='w-full' required placeholder="AC" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </section>
+                            <div className="flex w-full justify-center items-center col-span-2">
+                                <Button
+                                    type="submit"
+                                    className="cursor-pointer w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+                                >
+                                    Submit
+                                    {/* {isUpdate ? "Update" : "Submit"} */}
+                                </Button>
+                            </div>
+                        </form>
+                    </Form>
+                </Card>
+            </div>
+
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import { GetUserByEmail, UpsertToken } from "@/lib/repo/userRepo";
-import { CreateToken } from "@/lib/token";
+import { CreateToken, CreateTokenWithJose } from "@/lib/token";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -38,12 +38,14 @@ export async function POST(req: NextRequest) {
                     role: user.Role?.name,
                 }
             })
-            const token = CreateToken({
+            const token = await CreateTokenWithJose({
                 id: user.id,
                 name: user.name || "",
                 email: user.email || "",
                 role: user.Role?.name || "",
             })
+
+            console.log("Token Login: ", token)
 
             // store token in the database
 

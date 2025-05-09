@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { HandleGetOnBoardingUserByUserId } from "./lib/services/onBoardingService";
-import { CreateToken, ValidateTokenWithJose } from "./lib/token";
+import { CreateToken, CreateTokenWithJose, ValidateTokenWithJose } from "./lib/token";
 import { UpsertToken } from "./lib/repo/userRepo";
 
 export async function middleware(req: NextRequest) {
@@ -29,7 +29,7 @@ export async function middleware(req: NextRequest) {
                 const refreshTokenValid = await ValidateTokenWithJose(refreshToken);
 
                 if (refreshTokenValid) {
-                    const newToken = CreateToken({
+                    const newToken = await CreateTokenWithJose({
                         id: refreshTokenValid.id as string,
                         name: refreshTokenValid.name as string,
                         email: refreshTokenValid.email as string,

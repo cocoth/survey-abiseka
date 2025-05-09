@@ -15,7 +15,7 @@ interface ProfileCardProps {
 const ProfileCard = (data: ProfileCardProps) => {
     return (
         <div className='grid gap-3'>
-            <Card className='w-full max-w-2xl mx-auto mt-10'>
+            <Card className='w-full max-w-2xl mx-auto'>
                 <CardHeader className='flex gap-3 items-center'>
                     <Avatar
                         username={data.user?.name || ""}

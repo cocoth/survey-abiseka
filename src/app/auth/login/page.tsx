@@ -134,7 +134,7 @@ const LoginPage = () => {
                 <div className="max-w-md text-center">
                     <div className="mb-8 flex justify-center">
                         <div className="rounded-full bg-white p-4 shadow-lg">
-                            <ClipboardCheck className="h-12 w-12 text-[var(--primary-color)]" />
+                            <ClipboardCheck className="h-12 w-12 text-[var(--acent-color)]" />
                         </div>
                     </div>
                     <h2 className="text-2xl font-bold tracking-tight">Sistem Survey Kelayakan Tempat Ujian</h2>
@@ -143,15 +143,15 @@ const LoginPage = () => {
                     </p>
                     <div className="mt-8 grid grid-cols-3 gap-4">
                         <div className="rounded-lg bg-white p-4 shadow-md">
-                            <div className="text-3xl font-bold text-[var(--primary-color)]">100+</div>
+                            <div className="text-3xl font-bold text-[var(--acent-color)]">100+</div>
                             <div className="mt-1 text-sm text-muted-foreground">Tempat Ujian</div>
                         </div>
                         <div className="rounded-lg bg-white p-4 shadow-md">
-                            <div className="text-3xl font-bold text-[var(--primary-color)]">50+</div>
+                            <div className="text-3xl font-bold text-[var(--acent-color)]">50+</div>
                             <div className="mt-1 text-sm text-muted-foreground">Surveyor</div>
                         </div>
                         <div className="rounded-lg bg-white p-4 shadow-md">
-                            <div className="text-3xl font-bold text-[var(--primary-color)]">95%</div>
+                            <div className="text-3xl font-bold text-[var(--acent-color)]">95%</div>
                             <div className="mt-1 text-sm text-muted-foreground">Akurasi</div>
                         </div>
                     </div>

@@ -2,10 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChartColumnIncreasing, CircleUserRound, House } from "lucide-react";
-import Image from "next/image";
-import { User } from "@/generated/prisma";
-import { HandleGetCurrentRole, HandleGetCurrentUser } from "@/lib/services/userService";
+import { ChartColumn, CircleUserRound, House } from "lucide-react";
+import { HandleGetCurrentRole } from "@/lib/services/userService";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
@@ -30,15 +28,15 @@ const Sidebar = () => {
 
     const navItems = [
         {
-            label: role === "admin" ? "Dashboard" : "Home",
-            href: role === "admin" ? "/dashboard" : "/home",
-            icon: <House className="w-7 h-7" />,
-            active: pathname === "/home" || pathname === "/dashboard",
+            label: role === "admin" && "Dashboard",
+            href: role === "admin" && "/dashboard",
+            icon: role === "admin" && <House className="w-7 h-7" />,
+            active: pathname === "/dashboard",
         },
         {
             label: "Survey",
             href: role === "admin" ? "/dashboard/survey" : "/home/survey",
-            icon: <ChartColumnIncreasing className="w-7 h-7" />,
+            icon: <ChartColumn className="w-7 h-7" />,
             active: pathname === "/home/survey" || pathname === "/dashboard/survey",
         },
         {
@@ -53,17 +51,17 @@ const Sidebar = () => {
         <aside className="w-1/5 h-screen bg-[var(--secondary-color)] p-4 sticky top-0 left-0">
             <nav>
                 <ul className="grid items-center space-y-4 font-bold text-white">
-                    {navItems.map((item, index) => (
+                    {navItems.filter(i=>i.icon).map((item, index) => (
                         <li key={index}>
                             <Link
-                                href={item.href}
+                                href={item.href || "#"}
                                 className={`flex items-center gap-3 px-4 py-2 font-bold rounded-md transition ${
                                     item.active ? "bg-gray-50/30" 
                                     : "hover:bg-blue-500/40"
                                     }`}
                             >
-                                {item.icon}
-                                <span className="font-bold">{item.label}</span>
+                                {item.icon && item.icon}
+                                <span className="font-bold">{item.label && item.label}</span>
                             </Link>
                         </li>
                     ))}

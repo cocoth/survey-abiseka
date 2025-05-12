@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model StatusSurvey
+ * 
+ */
+export type StatusSurvey = $Result.DefaultSelection<Prisma.$StatusSurveyPayload>
+/**
  * Model Survey
  * 
  */
@@ -59,8 +64,8 @@ export const RoleName: typeof $Enums.RoleName
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Surveys
- * const surveys = await prisma.survey.findMany()
+ * // Fetch zero or more StatusSurveys
+ * const statusSurveys = await prisma.statusSurvey.findMany()
  * ```
  *
  *
@@ -80,8 +85,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Surveys
-   * const surveys = await prisma.survey.findMany()
+   * // Fetch zero or more StatusSurveys
+   * const statusSurveys = await prisma.statusSurvey.findMany()
    * ```
    *
    *
@@ -178,6 +183,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.statusSurvey`: Exposes CRUD operations for the **StatusSurvey** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StatusSurveys
+    * const statusSurveys = await prisma.statusSurvey.findMany()
+    * ```
+    */
+  get statusSurvey(): Prisma.StatusSurveyDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.survey`: Exposes CRUD operations for the **Survey** model.
     * Example usage:
     * ```ts
@@ -656,6 +671,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    StatusSurvey: 'StatusSurvey',
     Survey: 'Survey',
     Data_PT: 'Data_PT',
     Role: 'Role',
@@ -678,10 +694,84 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "survey" | "data_PT" | "role" | "user"
+      modelProps: "statusSurvey" | "survey" | "data_PT" | "role" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      StatusSurvey: {
+        payload: Prisma.$StatusSurveyPayload<ExtArgs>
+        fields: Prisma.StatusSurveyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StatusSurveyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StatusSurveyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>
+          }
+          findFirst: {
+            args: Prisma.StatusSurveyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StatusSurveyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>
+          }
+          findMany: {
+            args: Prisma.StatusSurveyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>[]
+          }
+          create: {
+            args: Prisma.StatusSurveyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>
+          }
+          createMany: {
+            args: Prisma.StatusSurveyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StatusSurveyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>[]
+          }
+          delete: {
+            args: Prisma.StatusSurveyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>
+          }
+          update: {
+            args: Prisma.StatusSurveyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>
+          }
+          deleteMany: {
+            args: Prisma.StatusSurveyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StatusSurveyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StatusSurveyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>[]
+          }
+          upsert: {
+            args: Prisma.StatusSurveyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusSurveyPayload>
+          }
+          aggregate: {
+            args: Prisma.StatusSurveyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStatusSurvey>
+          }
+          groupBy: {
+            args: Prisma.StatusSurveyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StatusSurveyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StatusSurveyCountArgs<ExtArgs>
+            result: $Utils.Optional<StatusSurveyCountAggregateOutputType> | number
+          }
+        }
+      }
       Survey: {
         payload: Prisma.$SurveyPayload<ExtArgs>
         fields: Prisma.SurveyFieldRefs
@@ -1062,6 +1152,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    statusSurvey?: StatusSurveyOmit
     survey?: SurveyOmit
     data_PT?: Data_PTOmit
     role?: RoleOmit
@@ -1189,6 +1280,1096 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model StatusSurvey
+   */
+
+  export type AggregateStatusSurvey = {
+    _count: StatusSurveyCountAggregateOutputType | null
+    _min: StatusSurveyMinAggregateOutputType | null
+    _max: StatusSurveyMaxAggregateOutputType | null
+  }
+
+  export type StatusSurveyMinAggregateOutputType = {
+    id: string | null
+    status: string | null
+    surveyId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type StatusSurveyMaxAggregateOutputType = {
+    id: string | null
+    status: string | null
+    surveyId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type StatusSurveyCountAggregateOutputType = {
+    id: number
+    status: number
+    surveyId: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type StatusSurveyMinAggregateInputType = {
+    id?: true
+    status?: true
+    surveyId?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type StatusSurveyMaxAggregateInputType = {
+    id?: true
+    status?: true
+    surveyId?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type StatusSurveyCountAggregateInputType = {
+    id?: true
+    status?: true
+    surveyId?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type StatusSurveyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StatusSurvey to aggregate.
+     */
+    where?: StatusSurveyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusSurveys to fetch.
+     */
+    orderBy?: StatusSurveyOrderByWithRelationInput | StatusSurveyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StatusSurveyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusSurveys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusSurveys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StatusSurveys
+    **/
+    _count?: true | StatusSurveyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StatusSurveyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StatusSurveyMaxAggregateInputType
+  }
+
+  export type GetStatusSurveyAggregateType<T extends StatusSurveyAggregateArgs> = {
+        [P in keyof T & keyof AggregateStatusSurvey]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStatusSurvey[P]>
+      : GetScalarType<T[P], AggregateStatusSurvey[P]>
+  }
+
+
+
+
+  export type StatusSurveyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StatusSurveyWhereInput
+    orderBy?: StatusSurveyOrderByWithAggregationInput | StatusSurveyOrderByWithAggregationInput[]
+    by: StatusSurveyScalarFieldEnum[] | StatusSurveyScalarFieldEnum
+    having?: StatusSurveyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StatusSurveyCountAggregateInputType | true
+    _min?: StatusSurveyMinAggregateInputType
+    _max?: StatusSurveyMaxAggregateInputType
+  }
+
+  export type StatusSurveyGroupByOutputType = {
+    id: string
+    status: string
+    surveyId: string | null
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: StatusSurveyCountAggregateOutputType | null
+    _min: StatusSurveyMinAggregateOutputType | null
+    _max: StatusSurveyMaxAggregateOutputType | null
+  }
+
+  type GetStatusSurveyGroupByPayload<T extends StatusSurveyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StatusSurveyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StatusSurveyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StatusSurveyGroupByOutputType[P]>
+            : GetScalarType<T[P], StatusSurveyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StatusSurveySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    surveyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    Survey?: boolean | StatusSurvey$SurveyArgs<ExtArgs>
+  }, ExtArgs["result"]["statusSurvey"]>
+
+  export type StatusSurveySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    surveyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    Survey?: boolean | StatusSurvey$SurveyArgs<ExtArgs>
+  }, ExtArgs["result"]["statusSurvey"]>
+
+  export type StatusSurveySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    status?: boolean
+    surveyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    Survey?: boolean | StatusSurvey$SurveyArgs<ExtArgs>
+  }, ExtArgs["result"]["statusSurvey"]>
+
+  export type StatusSurveySelectScalar = {
+    id?: boolean
+    status?: boolean
+    surveyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type StatusSurveyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "surveyId" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["statusSurvey"]>
+  export type StatusSurveyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Survey?: boolean | StatusSurvey$SurveyArgs<ExtArgs>
+  }
+  export type StatusSurveyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Survey?: boolean | StatusSurvey$SurveyArgs<ExtArgs>
+  }
+  export type StatusSurveyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Survey?: boolean | StatusSurvey$SurveyArgs<ExtArgs>
+  }
+
+  export type $StatusSurveyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StatusSurvey"
+    objects: {
+      Survey: Prisma.$SurveyPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      status: string
+      surveyId: string | null
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+    }, ExtArgs["result"]["statusSurvey"]>
+    composites: {}
+  }
+
+  type StatusSurveyGetPayload<S extends boolean | null | undefined | StatusSurveyDefaultArgs> = $Result.GetResult<Prisma.$StatusSurveyPayload, S>
+
+  type StatusSurveyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StatusSurveyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StatusSurveyCountAggregateInputType | true
+    }
+
+  export interface StatusSurveyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StatusSurvey'], meta: { name: 'StatusSurvey' } }
+    /**
+     * Find zero or one StatusSurvey that matches the filter.
+     * @param {StatusSurveyFindUniqueArgs} args - Arguments to find a StatusSurvey
+     * @example
+     * // Get one StatusSurvey
+     * const statusSurvey = await prisma.statusSurvey.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StatusSurveyFindUniqueArgs>(args: SelectSubset<T, StatusSurveyFindUniqueArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one StatusSurvey that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StatusSurveyFindUniqueOrThrowArgs} args - Arguments to find a StatusSurvey
+     * @example
+     * // Get one StatusSurvey
+     * const statusSurvey = await prisma.statusSurvey.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StatusSurveyFindUniqueOrThrowArgs>(args: SelectSubset<T, StatusSurveyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StatusSurvey that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusSurveyFindFirstArgs} args - Arguments to find a StatusSurvey
+     * @example
+     * // Get one StatusSurvey
+     * const statusSurvey = await prisma.statusSurvey.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StatusSurveyFindFirstArgs>(args?: SelectSubset<T, StatusSurveyFindFirstArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first StatusSurvey that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusSurveyFindFirstOrThrowArgs} args - Arguments to find a StatusSurvey
+     * @example
+     * // Get one StatusSurvey
+     * const statusSurvey = await prisma.statusSurvey.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StatusSurveyFindFirstOrThrowArgs>(args?: SelectSubset<T, StatusSurveyFindFirstOrThrowArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more StatusSurveys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusSurveyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StatusSurveys
+     * const statusSurveys = await prisma.statusSurvey.findMany()
+     * 
+     * // Get first 10 StatusSurveys
+     * const statusSurveys = await prisma.statusSurvey.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const statusSurveyWithIdOnly = await prisma.statusSurvey.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StatusSurveyFindManyArgs>(args?: SelectSubset<T, StatusSurveyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a StatusSurvey.
+     * @param {StatusSurveyCreateArgs} args - Arguments to create a StatusSurvey.
+     * @example
+     * // Create one StatusSurvey
+     * const StatusSurvey = await prisma.statusSurvey.create({
+     *   data: {
+     *     // ... data to create a StatusSurvey
+     *   }
+     * })
+     * 
+     */
+    create<T extends StatusSurveyCreateArgs>(args: SelectSubset<T, StatusSurveyCreateArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many StatusSurveys.
+     * @param {StatusSurveyCreateManyArgs} args - Arguments to create many StatusSurveys.
+     * @example
+     * // Create many StatusSurveys
+     * const statusSurvey = await prisma.statusSurvey.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StatusSurveyCreateManyArgs>(args?: SelectSubset<T, StatusSurveyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StatusSurveys and returns the data saved in the database.
+     * @param {StatusSurveyCreateManyAndReturnArgs} args - Arguments to create many StatusSurveys.
+     * @example
+     * // Create many StatusSurveys
+     * const statusSurvey = await prisma.statusSurvey.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StatusSurveys and only return the `id`
+     * const statusSurveyWithIdOnly = await prisma.statusSurvey.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StatusSurveyCreateManyAndReturnArgs>(args?: SelectSubset<T, StatusSurveyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a StatusSurvey.
+     * @param {StatusSurveyDeleteArgs} args - Arguments to delete one StatusSurvey.
+     * @example
+     * // Delete one StatusSurvey
+     * const StatusSurvey = await prisma.statusSurvey.delete({
+     *   where: {
+     *     // ... filter to delete one StatusSurvey
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StatusSurveyDeleteArgs>(args: SelectSubset<T, StatusSurveyDeleteArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one StatusSurvey.
+     * @param {StatusSurveyUpdateArgs} args - Arguments to update one StatusSurvey.
+     * @example
+     * // Update one StatusSurvey
+     * const statusSurvey = await prisma.statusSurvey.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StatusSurveyUpdateArgs>(args: SelectSubset<T, StatusSurveyUpdateArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more StatusSurveys.
+     * @param {StatusSurveyDeleteManyArgs} args - Arguments to filter StatusSurveys to delete.
+     * @example
+     * // Delete a few StatusSurveys
+     * const { count } = await prisma.statusSurvey.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StatusSurveyDeleteManyArgs>(args?: SelectSubset<T, StatusSurveyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StatusSurveys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusSurveyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StatusSurveys
+     * const statusSurvey = await prisma.statusSurvey.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StatusSurveyUpdateManyArgs>(args: SelectSubset<T, StatusSurveyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StatusSurveys and returns the data updated in the database.
+     * @param {StatusSurveyUpdateManyAndReturnArgs} args - Arguments to update many StatusSurveys.
+     * @example
+     * // Update many StatusSurveys
+     * const statusSurvey = await prisma.statusSurvey.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StatusSurveys and only return the `id`
+     * const statusSurveyWithIdOnly = await prisma.statusSurvey.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StatusSurveyUpdateManyAndReturnArgs>(args: SelectSubset<T, StatusSurveyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one StatusSurvey.
+     * @param {StatusSurveyUpsertArgs} args - Arguments to update or create a StatusSurvey.
+     * @example
+     * // Update or create a StatusSurvey
+     * const statusSurvey = await prisma.statusSurvey.upsert({
+     *   create: {
+     *     // ... data to create a StatusSurvey
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StatusSurvey we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StatusSurveyUpsertArgs>(args: SelectSubset<T, StatusSurveyUpsertArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of StatusSurveys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusSurveyCountArgs} args - Arguments to filter StatusSurveys to count.
+     * @example
+     * // Count the number of StatusSurveys
+     * const count = await prisma.statusSurvey.count({
+     *   where: {
+     *     // ... the filter for the StatusSurveys we want to count
+     *   }
+     * })
+    **/
+    count<T extends StatusSurveyCountArgs>(
+      args?: Subset<T, StatusSurveyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StatusSurveyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StatusSurvey.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusSurveyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StatusSurveyAggregateArgs>(args: Subset<T, StatusSurveyAggregateArgs>): Prisma.PrismaPromise<GetStatusSurveyAggregateType<T>>
+
+    /**
+     * Group by StatusSurvey.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusSurveyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StatusSurveyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StatusSurveyGroupByArgs['orderBy'] }
+        : { orderBy?: StatusSurveyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StatusSurveyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStatusSurveyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StatusSurvey model
+   */
+  readonly fields: StatusSurveyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StatusSurvey.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StatusSurveyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Survey<T extends StatusSurvey$SurveyArgs<ExtArgs> = {}>(args?: Subset<T, StatusSurvey$SurveyArgs<ExtArgs>>): Prisma__SurveyClient<$Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StatusSurvey model
+   */
+  interface StatusSurveyFieldRefs {
+    readonly id: FieldRef<"StatusSurvey", 'String'>
+    readonly status: FieldRef<"StatusSurvey", 'String'>
+    readonly surveyId: FieldRef<"StatusSurvey", 'String'>
+    readonly createdAt: FieldRef<"StatusSurvey", 'DateTime'>
+    readonly updatedAt: FieldRef<"StatusSurvey", 'DateTime'>
+    readonly deletedAt: FieldRef<"StatusSurvey", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StatusSurvey findUnique
+   */
+  export type StatusSurveyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusSurvey to fetch.
+     */
+    where: StatusSurveyWhereUniqueInput
+  }
+
+  /**
+   * StatusSurvey findUniqueOrThrow
+   */
+  export type StatusSurveyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusSurvey to fetch.
+     */
+    where: StatusSurveyWhereUniqueInput
+  }
+
+  /**
+   * StatusSurvey findFirst
+   */
+  export type StatusSurveyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusSurvey to fetch.
+     */
+    where?: StatusSurveyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusSurveys to fetch.
+     */
+    orderBy?: StatusSurveyOrderByWithRelationInput | StatusSurveyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StatusSurveys.
+     */
+    cursor?: StatusSurveyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusSurveys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusSurveys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StatusSurveys.
+     */
+    distinct?: StatusSurveyScalarFieldEnum | StatusSurveyScalarFieldEnum[]
+  }
+
+  /**
+   * StatusSurvey findFirstOrThrow
+   */
+  export type StatusSurveyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusSurvey to fetch.
+     */
+    where?: StatusSurveyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusSurveys to fetch.
+     */
+    orderBy?: StatusSurveyOrderByWithRelationInput | StatusSurveyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StatusSurveys.
+     */
+    cursor?: StatusSurveyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusSurveys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusSurveys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StatusSurveys.
+     */
+    distinct?: StatusSurveyScalarFieldEnum | StatusSurveyScalarFieldEnum[]
+  }
+
+  /**
+   * StatusSurvey findMany
+   */
+  export type StatusSurveyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * Filter, which StatusSurveys to fetch.
+     */
+    where?: StatusSurveyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StatusSurveys to fetch.
+     */
+    orderBy?: StatusSurveyOrderByWithRelationInput | StatusSurveyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StatusSurveys.
+     */
+    cursor?: StatusSurveyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StatusSurveys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StatusSurveys.
+     */
+    skip?: number
+    distinct?: StatusSurveyScalarFieldEnum | StatusSurveyScalarFieldEnum[]
+  }
+
+  /**
+   * StatusSurvey create
+   */
+  export type StatusSurveyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StatusSurvey.
+     */
+    data: XOR<StatusSurveyCreateInput, StatusSurveyUncheckedCreateInput>
+  }
+
+  /**
+   * StatusSurvey createMany
+   */
+  export type StatusSurveyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StatusSurveys.
+     */
+    data: StatusSurveyCreateManyInput | StatusSurveyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StatusSurvey createManyAndReturn
+   */
+  export type StatusSurveyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * The data used to create many StatusSurveys.
+     */
+    data: StatusSurveyCreateManyInput | StatusSurveyCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StatusSurvey update
+   */
+  export type StatusSurveyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StatusSurvey.
+     */
+    data: XOR<StatusSurveyUpdateInput, StatusSurveyUncheckedUpdateInput>
+    /**
+     * Choose, which StatusSurvey to update.
+     */
+    where: StatusSurveyWhereUniqueInput
+  }
+
+  /**
+   * StatusSurvey updateMany
+   */
+  export type StatusSurveyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StatusSurveys.
+     */
+    data: XOR<StatusSurveyUpdateManyMutationInput, StatusSurveyUncheckedUpdateManyInput>
+    /**
+     * Filter which StatusSurveys to update
+     */
+    where?: StatusSurveyWhereInput
+    /**
+     * Limit how many StatusSurveys to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StatusSurvey updateManyAndReturn
+   */
+  export type StatusSurveyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * The data used to update StatusSurveys.
+     */
+    data: XOR<StatusSurveyUpdateManyMutationInput, StatusSurveyUncheckedUpdateManyInput>
+    /**
+     * Filter which StatusSurveys to update
+     */
+    where?: StatusSurveyWhereInput
+    /**
+     * Limit how many StatusSurveys to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StatusSurvey upsert
+   */
+  export type StatusSurveyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StatusSurvey to update in case it exists.
+     */
+    where: StatusSurveyWhereUniqueInput
+    /**
+     * In case the StatusSurvey found by the `where` argument doesn't exist, create a new StatusSurvey with this data.
+     */
+    create: XOR<StatusSurveyCreateInput, StatusSurveyUncheckedCreateInput>
+    /**
+     * In case the StatusSurvey was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StatusSurveyUpdateInput, StatusSurveyUncheckedUpdateInput>
+  }
+
+  /**
+   * StatusSurvey delete
+   */
+  export type StatusSurveyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    /**
+     * Filter which StatusSurvey to delete.
+     */
+    where: StatusSurveyWhereUniqueInput
+  }
+
+  /**
+   * StatusSurvey deleteMany
+   */
+  export type StatusSurveyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StatusSurveys to delete
+     */
+    where?: StatusSurveyWhereInput
+    /**
+     * Limit how many StatusSurveys to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StatusSurvey.Survey
+   */
+  export type StatusSurvey$SurveyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Survey
+     */
+    select?: SurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Survey
+     */
+    omit?: SurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SurveyInclude<ExtArgs> | null
+    where?: SurveyWhereInput
+  }
+
+  /**
+   * StatusSurvey without action
+   */
+  export type StatusSurveyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model Survey
@@ -1427,6 +2608,7 @@ export namespace Prisma {
     deletedAt?: boolean
     userId?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
+    StatusSurvey?: boolean | Survey$StatusSurveyArgs<ExtArgs>
   }, ExtArgs["result"]["survey"]>
 
   export type SurveySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1485,6 +2667,7 @@ export namespace Prisma {
   export type SurveyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "kecepatan_internet" | "provider_internet" | "jenis_internet" | "jumlah_komputer" | "jenis_komputer" | "spesifikasi_komputer" | "jumlah_laboratorium" | "jenis_laboratorium" | "pendinginan_laboratorium" | "createdAt" | "updatedAt" | "deletedAt" | "userId", ExtArgs["result"]["survey"]>
   export type SurveyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
+    StatusSurvey?: boolean | Survey$StatusSurveyArgs<ExtArgs>
   }
   export type SurveyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
@@ -1497,6 +2680,7 @@ export namespace Prisma {
     name: "Survey"
     objects: {
       User: Prisma.$UserPayload<ExtArgs>
+      StatusSurvey: Prisma.$StatusSurveyPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1908,6 +3092,7 @@ export namespace Prisma {
   export interface Prisma__SurveyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    StatusSurvey<T extends Survey$StatusSurveyArgs<ExtArgs> = {}>(args?: Subset<T, Survey$StatusSurveyArgs<ExtArgs>>): Prisma__StatusSurveyClient<$Result.GetResult<Prisma.$StatusSurveyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2344,6 +3529,25 @@ export namespace Prisma {
      * Limit how many Surveys to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Survey.StatusSurvey
+   */
+  export type Survey$StatusSurveyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusSurvey
+     */
+    select?: StatusSurveySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StatusSurvey
+     */
+    omit?: StatusSurveyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusSurveyInclude<ExtArgs> | null
+    where?: StatusSurveyWhereInput
   }
 
   /**
@@ -5773,6 +6977,18 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const StatusSurveyScalarFieldEnum: {
+    id: 'id',
+    status: 'status',
+    surveyId: 'surveyId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type StatusSurveyScalarFieldEnum = (typeof StatusSurveyScalarFieldEnum)[keyof typeof StatusSurveyScalarFieldEnum]
+
+
   export const SurveyScalarFieldEnum: {
     id: 'id',
     kecepatan_internet: 'kecepatan_internet',
@@ -5925,6 +7141,66 @@ export namespace Prisma {
    */
 
 
+  export type StatusSurveyWhereInput = {
+    AND?: StatusSurveyWhereInput | StatusSurveyWhereInput[]
+    OR?: StatusSurveyWhereInput[]
+    NOT?: StatusSurveyWhereInput | StatusSurveyWhereInput[]
+    id?: StringFilter<"StatusSurvey"> | string
+    status?: StringFilter<"StatusSurvey"> | string
+    surveyId?: StringNullableFilter<"StatusSurvey"> | string | null
+    createdAt?: DateTimeFilter<"StatusSurvey"> | Date | string
+    updatedAt?: DateTimeFilter<"StatusSurvey"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"StatusSurvey"> | Date | string | null
+    Survey?: XOR<SurveyNullableScalarRelationFilter, SurveyWhereInput> | null
+  }
+
+  export type StatusSurveyOrderByWithRelationInput = {
+    id?: SortOrder
+    status?: SortOrder
+    surveyId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    Survey?: SurveyOrderByWithRelationInput
+  }
+
+  export type StatusSurveyWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    surveyId?: string
+    AND?: StatusSurveyWhereInput | StatusSurveyWhereInput[]
+    OR?: StatusSurveyWhereInput[]
+    NOT?: StatusSurveyWhereInput | StatusSurveyWhereInput[]
+    status?: StringFilter<"StatusSurvey"> | string
+    createdAt?: DateTimeFilter<"StatusSurvey"> | Date | string
+    updatedAt?: DateTimeFilter<"StatusSurvey"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"StatusSurvey"> | Date | string | null
+    Survey?: XOR<SurveyNullableScalarRelationFilter, SurveyWhereInput> | null
+  }, "id" | "surveyId">
+
+  export type StatusSurveyOrderByWithAggregationInput = {
+    id?: SortOrder
+    status?: SortOrder
+    surveyId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: StatusSurveyCountOrderByAggregateInput
+    _max?: StatusSurveyMaxOrderByAggregateInput
+    _min?: StatusSurveyMinOrderByAggregateInput
+  }
+
+  export type StatusSurveyScalarWhereWithAggregatesInput = {
+    AND?: StatusSurveyScalarWhereWithAggregatesInput | StatusSurveyScalarWhereWithAggregatesInput[]
+    OR?: StatusSurveyScalarWhereWithAggregatesInput[]
+    NOT?: StatusSurveyScalarWhereWithAggregatesInput | StatusSurveyScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StatusSurvey"> | string
+    status?: StringWithAggregatesFilter<"StatusSurvey"> | string
+    surveyId?: StringNullableWithAggregatesFilter<"StatusSurvey"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"StatusSurvey"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"StatusSurvey"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"StatusSurvey"> | Date | string | null
+  }
+
   export type SurveyWhereInput = {
     AND?: SurveyWhereInput | SurveyWhereInput[]
     OR?: SurveyWhereInput[]
@@ -5944,6 +7220,7 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"Survey"> | Date | string | null
     userId?: StringFilter<"Survey"> | string
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
+    StatusSurvey?: XOR<StatusSurveyNullableScalarRelationFilter, StatusSurveyWhereInput> | null
   }
 
   export type SurveyOrderByWithRelationInput = {
@@ -5962,6 +7239,7 @@ export namespace Prisma {
     deletedAt?: SortOrderInput | SortOrder
     userId?: SortOrder
     User?: UserOrderByWithRelationInput
+    StatusSurvey?: StatusSurveyOrderByWithRelationInput
   }
 
   export type SurveyWhereUniqueInput = Prisma.AtLeast<{
@@ -5983,6 +7261,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Survey"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Survey"> | Date | string | null
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
+    StatusSurvey?: XOR<StatusSurveyNullableScalarRelationFilter, StatusSurveyWhereInput> | null
   }, "id" | "userId">
 
   export type SurveyOrderByWithAggregationInput = {
@@ -6251,6 +7530,68 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
+  export type StatusSurveyCreateInput = {
+    id?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    Survey?: SurveyCreateNestedOneWithoutStatusSurveyInput
+  }
+
+  export type StatusSurveyUncheckedCreateInput = {
+    id?: string
+    status?: string
+    surveyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type StatusSurveyUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Survey?: SurveyUpdateOneWithoutStatusSurveyNestedInput
+  }
+
+  export type StatusSurveyUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    surveyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StatusSurveyCreateManyInput = {
+    id?: string
+    status?: string
+    surveyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type StatusSurveyUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StatusSurveyUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    surveyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type SurveyCreateInput = {
     id?: string
     kecepatan_internet?: string | null
@@ -6266,6 +7607,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     User: UserCreateNestedOneWithoutSurveyInput
+    StatusSurvey?: StatusSurveyCreateNestedOneWithoutSurveyInput
   }
 
   export type SurveyUncheckedCreateInput = {
@@ -6283,6 +7625,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     deletedAt?: Date | string | null
     userId: string
+    StatusSurvey?: StatusSurveyUncheckedCreateNestedOneWithoutSurveyInput
   }
 
   export type SurveyUpdateInput = {
@@ -6300,6 +7643,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     User?: UserUpdateOneRequiredWithoutSurveyNestedInput
+    StatusSurvey?: StatusSurveyUpdateOneWithoutSurveyNestedInput
   }
 
   export type SurveyUncheckedUpdateInput = {
@@ -6317,6 +7661,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: StringFieldUpdateOperationsInput | string
+    StatusSurvey?: StatusSurveyUncheckedUpdateOneWithoutSurveyNestedInput
   }
 
   export type SurveyCreateManyInput = {
@@ -6676,9 +8021,9 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type SurveyNullableScalarRelationFilter = {
+    is?: SurveyWhereInput | null
+    isNot?: SurveyWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -6686,55 +8031,31 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type SurveyCountOrderByAggregateInput = {
+  export type StatusSurveyCountOrderByAggregateInput = {
     id?: SortOrder
-    kecepatan_internet?: SortOrder
-    provider_internet?: SortOrder
-    jenis_internet?: SortOrder
-    jumlah_komputer?: SortOrder
-    jenis_komputer?: SortOrder
-    spesifikasi_komputer?: SortOrder
-    jumlah_laboratorium?: SortOrder
-    jenis_laboratorium?: SortOrder
-    pendinginan_laboratorium?: SortOrder
+    status?: SortOrder
+    surveyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
-    userId?: SortOrder
   }
 
-  export type SurveyMaxOrderByAggregateInput = {
+  export type StatusSurveyMaxOrderByAggregateInput = {
     id?: SortOrder
-    kecepatan_internet?: SortOrder
-    provider_internet?: SortOrder
-    jenis_internet?: SortOrder
-    jumlah_komputer?: SortOrder
-    jenis_komputer?: SortOrder
-    spesifikasi_komputer?: SortOrder
-    jumlah_laboratorium?: SortOrder
-    jenis_laboratorium?: SortOrder
-    pendinginan_laboratorium?: SortOrder
+    status?: SortOrder
+    surveyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
-    userId?: SortOrder
   }
 
-  export type SurveyMinOrderByAggregateInput = {
+  export type StatusSurveyMinOrderByAggregateInput = {
     id?: SortOrder
-    kecepatan_internet?: SortOrder
-    provider_internet?: SortOrder
-    jenis_internet?: SortOrder
-    jumlah_komputer?: SortOrder
-    jenis_komputer?: SortOrder
-    spesifikasi_komputer?: SortOrder
-    jumlah_laboratorium?: SortOrder
-    jenis_laboratorium?: SortOrder
-    pendinginan_laboratorium?: SortOrder
+    status?: SortOrder
+    surveyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
-    userId?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6799,6 +8120,67 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type StatusSurveyNullableScalarRelationFilter = {
+    is?: StatusSurveyWhereInput | null
+    isNot?: StatusSurveyWhereInput | null
+  }
+
+  export type SurveyCountOrderByAggregateInput = {
+    id?: SortOrder
+    kecepatan_internet?: SortOrder
+    provider_internet?: SortOrder
+    jenis_internet?: SortOrder
+    jumlah_komputer?: SortOrder
+    jenis_komputer?: SortOrder
+    spesifikasi_komputer?: SortOrder
+    jumlah_laboratorium?: SortOrder
+    jenis_laboratorium?: SortOrder
+    pendinginan_laboratorium?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type SurveyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    kecepatan_internet?: SortOrder
+    provider_internet?: SortOrder
+    jenis_internet?: SortOrder
+    jumlah_komputer?: SortOrder
+    jenis_komputer?: SortOrder
+    spesifikasi_komputer?: SortOrder
+    jumlah_laboratorium?: SortOrder
+    jenis_laboratorium?: SortOrder
+    pendinginan_laboratorium?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type SurveyMinOrderByAggregateInput = {
+    id?: SortOrder
+    kecepatan_internet?: SortOrder
+    provider_internet?: SortOrder
+    jenis_internet?: SortOrder
+    jumlah_komputer?: SortOrder
+    jenis_komputer?: SortOrder
+    spesifikasi_komputer?: SortOrder
+    jumlah_laboratorium?: SortOrder
+    jenis_laboratorium?: SortOrder
+    pendinginan_laboratorium?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type Data_PTCountOrderByAggregateInput = {
@@ -6902,11 +8284,6 @@ export namespace Prisma {
     isNot?: RoleWhereInput | null
   }
 
-  export type SurveyNullableScalarRelationFilter = {
-    is?: SurveyWhereInput | null
-    isNot?: SurveyWhereInput | null
-  }
-
   export type Data_PTNullableScalarRelationFilter = {
     is?: Data_PTWhereInput | null
     isNot?: Data_PTWhereInput | null
@@ -6948,18 +8325,14 @@ export namespace Prisma {
     deletedAt?: SortOrder
   }
 
-  export type UserCreateNestedOneWithoutSurveyInput = {
-    create?: XOR<UserCreateWithoutSurveyInput, UserUncheckedCreateWithoutSurveyInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSurveyInput
-    connect?: UserWhereUniqueInput
+  export type SurveyCreateNestedOneWithoutStatusSurveyInput = {
+    create?: XOR<SurveyCreateWithoutStatusSurveyInput, SurveyUncheckedCreateWithoutStatusSurveyInput>
+    connectOrCreate?: SurveyCreateOrConnectWithoutStatusSurveyInput
+    connect?: SurveyWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -6970,12 +8343,64 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
+  export type SurveyUpdateOneWithoutStatusSurveyNestedInput = {
+    create?: XOR<SurveyCreateWithoutStatusSurveyInput, SurveyUncheckedCreateWithoutStatusSurveyInput>
+    connectOrCreate?: SurveyCreateOrConnectWithoutStatusSurveyInput
+    upsert?: SurveyUpsertWithoutStatusSurveyInput
+    disconnect?: SurveyWhereInput | boolean
+    delete?: SurveyWhereInput | boolean
+    connect?: SurveyWhereUniqueInput
+    update?: XOR<XOR<SurveyUpdateToOneWithWhereWithoutStatusSurveyInput, SurveyUpdateWithoutStatusSurveyInput>, SurveyUncheckedUpdateWithoutStatusSurveyInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type UserCreateNestedOneWithoutSurveyInput = {
+    create?: XOR<UserCreateWithoutSurveyInput, UserUncheckedCreateWithoutSurveyInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSurveyInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type StatusSurveyCreateNestedOneWithoutSurveyInput = {
+    create?: XOR<StatusSurveyCreateWithoutSurveyInput, StatusSurveyUncheckedCreateWithoutSurveyInput>
+    connectOrCreate?: StatusSurveyCreateOrConnectWithoutSurveyInput
+    connect?: StatusSurveyWhereUniqueInput
+  }
+
+  export type StatusSurveyUncheckedCreateNestedOneWithoutSurveyInput = {
+    create?: XOR<StatusSurveyCreateWithoutSurveyInput, StatusSurveyUncheckedCreateWithoutSurveyInput>
+    connectOrCreate?: StatusSurveyCreateOrConnectWithoutSurveyInput
+    connect?: StatusSurveyWhereUniqueInput
+  }
+
   export type UserUpdateOneRequiredWithoutSurveyNestedInput = {
     create?: XOR<UserCreateWithoutSurveyInput, UserUncheckedCreateWithoutSurveyInput>
     connectOrCreate?: UserCreateOrConnectWithoutSurveyInput
     upsert?: UserUpsertWithoutSurveyInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSurveyInput, UserUpdateWithoutSurveyInput>, UserUncheckedUpdateWithoutSurveyInput>
+  }
+
+  export type StatusSurveyUpdateOneWithoutSurveyNestedInput = {
+    create?: XOR<StatusSurveyCreateWithoutSurveyInput, StatusSurveyUncheckedCreateWithoutSurveyInput>
+    connectOrCreate?: StatusSurveyCreateOrConnectWithoutSurveyInput
+    upsert?: StatusSurveyUpsertWithoutSurveyInput
+    disconnect?: StatusSurveyWhereInput | boolean
+    delete?: StatusSurveyWhereInput | boolean
+    connect?: StatusSurveyWhereUniqueInput
+    update?: XOR<XOR<StatusSurveyUpdateToOneWithWhereWithoutSurveyInput, StatusSurveyUpdateWithoutSurveyInput>, StatusSurveyUncheckedUpdateWithoutSurveyInput>
+  }
+
+  export type StatusSurveyUncheckedUpdateOneWithoutSurveyNestedInput = {
+    create?: XOR<StatusSurveyCreateWithoutSurveyInput, StatusSurveyUncheckedCreateWithoutSurveyInput>
+    connectOrCreate?: StatusSurveyCreateOrConnectWithoutSurveyInput
+    upsert?: StatusSurveyUpsertWithoutSurveyInput
+    disconnect?: StatusSurveyWhereInput | boolean
+    delete?: StatusSurveyWhereInput | boolean
+    connect?: StatusSurveyWhereUniqueInput
+    update?: XOR<XOR<StatusSurveyUpdateToOneWithWhereWithoutSurveyInput, StatusSurveyUpdateWithoutSurveyInput>, StatusSurveyUncheckedUpdateWithoutSurveyInput>
   }
 
   export type UserCreateNestedOneWithoutData_PTInput = {
@@ -7269,6 +8694,90 @@ export namespace Prisma {
     _max?: NestedEnumRoleNameFilter<$PrismaModel>
   }
 
+  export type SurveyCreateWithoutStatusSurveyInput = {
+    id?: string
+    kecepatan_internet?: string | null
+    provider_internet?: string | null
+    jenis_internet?: string | null
+    jumlah_komputer?: string | null
+    jenis_komputer?: string | null
+    spesifikasi_komputer?: string | null
+    jumlah_laboratorium?: string | null
+    jenis_laboratorium?: string | null
+    pendinginan_laboratorium?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    User: UserCreateNestedOneWithoutSurveyInput
+  }
+
+  export type SurveyUncheckedCreateWithoutStatusSurveyInput = {
+    id?: string
+    kecepatan_internet?: string | null
+    provider_internet?: string | null
+    jenis_internet?: string | null
+    jumlah_komputer?: string | null
+    jenis_komputer?: string | null
+    spesifikasi_komputer?: string | null
+    jumlah_laboratorium?: string | null
+    jenis_laboratorium?: string | null
+    pendinginan_laboratorium?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    userId: string
+  }
+
+  export type SurveyCreateOrConnectWithoutStatusSurveyInput = {
+    where: SurveyWhereUniqueInput
+    create: XOR<SurveyCreateWithoutStatusSurveyInput, SurveyUncheckedCreateWithoutStatusSurveyInput>
+  }
+
+  export type SurveyUpsertWithoutStatusSurveyInput = {
+    update: XOR<SurveyUpdateWithoutStatusSurveyInput, SurveyUncheckedUpdateWithoutStatusSurveyInput>
+    create: XOR<SurveyCreateWithoutStatusSurveyInput, SurveyUncheckedCreateWithoutStatusSurveyInput>
+    where?: SurveyWhereInput
+  }
+
+  export type SurveyUpdateToOneWithWhereWithoutStatusSurveyInput = {
+    where?: SurveyWhereInput
+    data: XOR<SurveyUpdateWithoutStatusSurveyInput, SurveyUncheckedUpdateWithoutStatusSurveyInput>
+  }
+
+  export type SurveyUpdateWithoutStatusSurveyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kecepatan_internet?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_internet?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_internet?: NullableStringFieldUpdateOperationsInput | string | null
+    jumlah_komputer?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_komputer?: NullableStringFieldUpdateOperationsInput | string | null
+    spesifikasi_komputer?: NullableStringFieldUpdateOperationsInput | string | null
+    jumlah_laboratorium?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_laboratorium?: NullableStringFieldUpdateOperationsInput | string | null
+    pendinginan_laboratorium?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    User?: UserUpdateOneRequiredWithoutSurveyNestedInput
+  }
+
+  export type SurveyUncheckedUpdateWithoutStatusSurveyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    kecepatan_internet?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_internet?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_internet?: NullableStringFieldUpdateOperationsInput | string | null
+    jumlah_komputer?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_komputer?: NullableStringFieldUpdateOperationsInput | string | null
+    spesifikasi_komputer?: NullableStringFieldUpdateOperationsInput | string | null
+    jumlah_laboratorium?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_laboratorium?: NullableStringFieldUpdateOperationsInput | string | null
+    pendinginan_laboratorium?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type UserCreateWithoutSurveyInput = {
     id?: string
     name?: string | null
@@ -7298,6 +8807,27 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutSurveyInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutSurveyInput, UserUncheckedCreateWithoutSurveyInput>
+  }
+
+  export type StatusSurveyCreateWithoutSurveyInput = {
+    id?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type StatusSurveyUncheckedCreateWithoutSurveyInput = {
+    id?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type StatusSurveyCreateOrConnectWithoutSurveyInput = {
+    where: StatusSurveyWhereUniqueInput
+    create: XOR<StatusSurveyCreateWithoutSurveyInput, StatusSurveyUncheckedCreateWithoutSurveyInput>
   }
 
   export type UserUpsertWithoutSurveyInput = {
@@ -7335,6 +8865,33 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Data_PT?: Data_PTUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type StatusSurveyUpsertWithoutSurveyInput = {
+    update: XOR<StatusSurveyUpdateWithoutSurveyInput, StatusSurveyUncheckedUpdateWithoutSurveyInput>
+    create: XOR<StatusSurveyCreateWithoutSurveyInput, StatusSurveyUncheckedCreateWithoutSurveyInput>
+    where?: StatusSurveyWhereInput
+  }
+
+  export type StatusSurveyUpdateToOneWithWhereWithoutSurveyInput = {
+    where?: StatusSurveyWhereInput
+    data: XOR<StatusSurveyUpdateWithoutSurveyInput, StatusSurveyUncheckedUpdateWithoutSurveyInput>
+  }
+
+  export type StatusSurveyUpdateWithoutSurveyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StatusSurveyUncheckedUpdateWithoutSurveyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserCreateWithoutData_PTInput = {
@@ -7507,6 +9064,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    StatusSurvey?: StatusSurveyCreateNestedOneWithoutSurveyInput
   }
 
   export type SurveyUncheckedCreateWithoutUserInput = {
@@ -7523,6 +9081,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    StatusSurvey?: StatusSurveyUncheckedCreateNestedOneWithoutSurveyInput
   }
 
   export type SurveyCreateOrConnectWithoutUserInput = {
@@ -7615,6 +9174,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    StatusSurvey?: StatusSurveyUpdateOneWithoutSurveyNestedInput
   }
 
   export type SurveyUncheckedUpdateWithoutUserInput = {
@@ -7631,6 +9191,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    StatusSurvey?: StatusSurveyUncheckedUpdateOneWithoutSurveyNestedInput
   }
 
   export type Data_PTUpsertWithoutUserInput = {

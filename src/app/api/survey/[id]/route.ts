@@ -6,6 +6,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     try {
         const { id } = await params;
         const survey = await GetSurveyById(id);
+        console.log(
+            "Survey Data API: ", survey
+        )
         if (!survey) {
             return NextResponse.json({
                 status: 404,

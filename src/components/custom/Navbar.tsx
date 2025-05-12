@@ -82,7 +82,7 @@ const Navbar = () => {
 
                     ) : (
                         <li className='h-full w-full hover:cursor-pointer'>
-                            <Link href={isLoginPage} className="text-gray-700 hover:text-blue-500">
+                            <Link href={isLoginPage} className="text-white">
                             {isLoginPage === "/auth/login" ? "Login" : "Register"}
                             </Link>
                         </li>

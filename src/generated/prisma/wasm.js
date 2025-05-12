@@ -120,6 +120,15 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.StatusSurveyScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  surveyId: 'surveyId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
 exports.Prisma.SurveyScalarFieldEnum = {
   id: 'id',
   kecepatan_internet: 'kecepatan_internet',
@@ -193,6 +202,7 @@ exports.RoleName = exports.$Enums.RoleName = {
 };
 
 exports.Prisma.ModelName = {
+  StatusSurvey: 'StatusSurvey',
   Survey: 'Survey',
   Data_PT: 'Data_PT',
   Role: 'Role',

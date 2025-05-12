@@ -2,7 +2,7 @@
 
 import OnboardingForm from '@/components/custom/OnboardingForm'
 import { Data_PT } from '@/generated/prisma'
-import { HandleGetOnBoardingUserByUserId, HandleOnBoarding, HandleUpdateOnBoarding } from '@/lib/services/onBoardingService'
+import { HandleGetOnBoardingUserByUserId } from '@/lib/services/onBoardingService'
 import { HandleGetCurrentUser } from '@/lib/services/userService'
 import React, { useEffect, useState } from 'react'
 

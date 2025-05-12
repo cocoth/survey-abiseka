@@ -47,3 +47,37 @@ interface SurveyRequest{
   pendinginan_laboratorium: string;
   userId: string;
 }
+
+interface SurveyWithUserAndStatus{
+  id: string;
+  kecepatan_internet: string;
+  provider_internet: string;
+  jenis_internet: string;
+  jumlah_komputer: string;
+  jenis_komputer: string;
+  spesifikasi_komputer: string;
+  jumlah_laboratorium: string;
+  jenis_laboratorium: string;
+  pendinginan_laboratorium: string;
+  userId: string;
+  createdAt: Date;
+  User?: {
+    id: string;
+    name: string;
+    email: string;
+    Data_PT?: {
+      id: string;
+      nama: string;
+      kode: string;
+      akreditasi: string;
+      tanggal_berdiri: Date | null;
+      no_SK_pendirian: string | null;
+      tanggal_SK_pendirian: Date | null;
+      alamat: string | null
+    }
+  };
+  StatusSurvey?: {
+    id: number,
+    status?: string
+  }
+}

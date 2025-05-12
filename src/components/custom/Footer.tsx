@@ -12,7 +12,7 @@ const Footer = () => {
           Website ini dirancang untuk mendukung ujian online kelayakan kampus.
         </p>
         <p className="text-xs">
-          Hubungi kami di <Link href="mailto:support@surveyapp.com" className="underline">support@surveyapp.com</Link> untuk bantuan.
+          Hubungi kami di <Link href="mailto:support@surveyapp.com" className="underline">support@surveyabiseka.com</Link> untuk bantuan.
         </p>
       </section>
     </footer>
